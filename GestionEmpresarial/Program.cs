@@ -1,5 +1,8 @@
+using GestionEmpresarial.DBContext;
+using GestionEmpresarial.Helpers.Seed;
 using GestionEmpresarial.Interfaces;
 using GestionEmpresarial.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,8 +10,20 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IPasswordService, PasswordService>();
+builder.Services.AddScoped<ISeeder, RolSeeder>();
+builder.Services.AddScoped<ISeeder, PermisoSeeder>();
+builder.Services.AddScoped<ISeeder, PermisoRolSeeder>();
+builder.Services.AddScoped<ISeeder, UsuarioSeeder>();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 var app = builder.Build();
+
+await SeedData.InicializarAsync(app.Services);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -33,6 +33,9 @@ namespace GestionEmpresarial.Configurations
             builder.Property(x => x.IntentosFallidos)
                    .HasDefaultValue(0);
 
+            builder.Property(x => x.Bloqueado)
+                    .HasDefaultValue(false);
+
             builder.HasOne(x => x.Rol)
                    .WithMany(x => x.Usuarios)
                    .HasForeignKey(x => x.IdRol)
