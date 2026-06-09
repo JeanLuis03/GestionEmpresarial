@@ -1,7 +1,11 @@
+using GestionEmpresarial.Interfaces;
+using GestionEmpresarial.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
