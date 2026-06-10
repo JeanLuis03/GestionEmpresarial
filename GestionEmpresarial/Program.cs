@@ -3,10 +3,37 @@ using GestionEmpresarial.Helpers.Seed;
 using GestionEmpresarial.Interfaces;
 using GestionEmpresarial.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Configuración de la cadena de conexión a la base de datos
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+// Configuración de la autenticación basada en cookies
+builder.Services
+    .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Login";
+
+        options.AccessDeniedPath = "/Login/AccessDenied";
+
+        options.Cookie.Name = "GestionEmpresarial.Auth";
+
+        options.Cookie.HttpOnly = true;
+
+        options.SlidingExpiration = true;
+
+        options.ExpireTimeSpan = TimeSpan.FromHours(8);
+    });
+
+
+// Agregar servicios al contenedor de dependencias
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IPasswordService, PasswordService>();
@@ -14,12 +41,8 @@ builder.Services.AddScoped<ISeeder, RolSeeder>();
 builder.Services.AddScoped<ISeeder, PermisoSeeder>();
 builder.Services.AddScoped<ISeeder, PermisoRolSeeder>();
 builder.Services.AddScoped<ISeeder, UsuarioSeeder>();
+builder.Services.AddAuthorization();
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-{
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection"));
-});
 
 var app = builder.Build();
 
@@ -36,6 +59,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication(); 
 app.UseAuthorization();
 
 app.MapStaticAssets();
