@@ -1,5 +1,8 @@
+using System.Security.Claims;
 using GestionEmpresarial.Interfaces;
 using GestionEmpresarial.ViewModels;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestionEmpresarial.Controllers
@@ -14,9 +17,15 @@ namespace GestionEmpresarial.Controllers
         }
 
         [HttpGet]
+        //[Route("Login")]
         public IActionResult Index()
         {
-            return View(new LoginViewModel());
+            if (User.Identity?.IsAuthenticated == true)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View();
         }
 
         [HttpPost]
@@ -28,14 +37,65 @@ namespace GestionEmpresarial.Controllers
                 return View(model);
             }
 
-            var usuario = await _authService.AutenticarAsync(model);
-            if (usuario is null)
+            var resultado = await _authService.AutenticarAsync(model);
+
+            if (!resultado.Exitoso)
             {
-                ModelState.AddModelError(string.Empty, "Usuario o contraseña incorrectos.");
-                return View(model);
+                TempData["SwalType"] = "error";
+                TempData["SwalTitle"] = "Error de autenticación";
+                TempData["SwalMessage"] = resultado.Mensaje;
+
+                return RedirectToAction(nameof(Index));
             }
+
+            var usuario = resultado.Usuario!;
+
+            var claims = new List<Claim>
+            {
+                new Claim(
+                    ClaimTypes.NameIdentifier,
+                    usuario.Id.ToString()),
+
+                new Claim(
+                    ClaimTypes.Name,
+                    usuario.NombreUsuario),
+
+                new Claim(
+                    ClaimTypes.Role,
+                    usuario.Rol.Nombre)
+            };
+
+            var identity = new ClaimsIdentity(
+                claims,
+                CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, 
+                principal,
+                new AuthenticationProperties
+                {
+                    IsPersistent = false  
+                });
 
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
     }
 }

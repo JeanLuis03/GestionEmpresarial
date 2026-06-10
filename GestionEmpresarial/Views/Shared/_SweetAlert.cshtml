@@ -1,0 +1,11 @@
+﻿@if (TempData["SwalTitle"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: '@TempData["SwalType"]',
+            title: '@TempData["SwalTitle"]',
+            text: '@TempData["SwalMessage"]',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+}

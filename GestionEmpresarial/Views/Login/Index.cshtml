@@ -1,0 +1,90 @@
+@using GestionEmpresarial.ViewModels
+
+@model LoginViewModel
+
+@{
+	Layout = "_AuthLayout";
+	ViewData["Title"] = "Iniciar Sesión";
+}
+
+<div class="login-container">
+
+	<div class="login-card">
+
+		<div class="login-header">
+
+			<div class="logo-circle">
+				<i class="bi bi-shield-lock-fill"></i>
+			</div>
+
+			<h2>Sistema de Gestión Empresarial</h2>
+
+			<p>
+				Ingrese sus credenciales para acceder
+			</p>
+
+		</div>
+
+		<form asp-action="Index"
+			  asp-controller="Login"
+			  method="post">
+
+			@Html.AntiForgeryToken()
+
+			<div class="form-group-custom">
+
+				<label asp-for="NombreUsuario">Usuario</label>
+
+				<div class="input-wrapper">
+
+					<i class="bi bi-person-fill"></i>
+
+					<input asp-for="NombreUsuario"
+						   class="form-control custom-input"
+						   autocomplete="username" />
+
+				</div>
+
+				<span asp-validation-for="NombreUsuario"
+					  class="text-danger"></span>
+
+			</div>
+
+			<div class="form-group-custom">
+
+				<label asp-for="Contrasena">Contraseña</label>
+
+				<div class="input-wrapper">
+
+					<i class="bi bi-lock-fill"></i>
+
+					<input asp-for="Contrasena"
+						   class="form-control custom-input"
+						   autocomplete="current-password" />
+
+				</div>
+
+				<span asp-validation-for="Contrasena"
+					  class="text-danger"></span>
+
+			</div>
+
+			<button type="submit"
+					class="btn-login">
+
+				<i class="bi bi-box-arrow-in-right"></i>
+
+				Iniciar Sesión
+
+			</button>
+
+		</form>
+
+	</div>
+
+</div>
+
+@section Scripts
+{
+	<partial name="_ValidationScriptsPartial" />
+}

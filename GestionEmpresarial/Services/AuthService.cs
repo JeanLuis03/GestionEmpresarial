@@ -30,7 +30,7 @@ namespace GestionEmpresarial.Services
                 return new AuthResult
                 {
                     Exitoso = false,
-                    Mensaje = "Usuario o contraseña incorrectos."
+                    Mensaje = "No posee acceso al sistema"
                 };
             }
 
@@ -57,7 +57,7 @@ namespace GestionEmpresarial.Services
                 return new AuthResult
                 {
                     Exitoso = false,
-                    Mensaje = "Usuario o contraseña incorrectos."
+                    Mensaje = "Credenciales incorrectas."
                 };
             }
 

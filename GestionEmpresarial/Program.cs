@@ -27,9 +27,11 @@ builder.Services
 
         options.Cookie.HttpOnly = true;
 
+        options.Cookie.MaxAge = null;
+        
         options.SlidingExpiration = true;
 
-        options.ExpireTimeSpan = TimeSpan.FromHours(8);
+        options.ExpireTimeSpan = TimeSpan.FromHours(3);
     });
 
 
@@ -66,7 +68,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Login}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 
