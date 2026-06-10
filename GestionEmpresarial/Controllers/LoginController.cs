@@ -94,7 +94,14 @@ namespace GestionEmpresarial.Controllers
         [HttpGet]
         public IActionResult AccessDenied()
         {
-            return View();
+            TempData["SwalType"] = "warning";
+
+            TempData["SwalTitle"] = "Acceso denegado";
+
+            TempData["SwalMessage"] =
+                "No posee permisos suficientes para acceder a este apartado.";
+
+            return RedirectToAction("Index", "Home");
         }
 
     }
