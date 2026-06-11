@@ -1,0 +1,126 @@
+﻿
+@inject GestionEmpresarial.Interfaces.ICurrentUserService CurrentUser
+
+<div class="sidebar-header">
+
+    CorePlus ERP
+
+</div>
+
+<div class="sidebar-menu">
+
+    <a asp-controller="Home"
+       asp-action="Index">
+
+        <span class="material-symbols-outlined">
+            dashboard
+        </span>
+
+        Dashboard
+
+    </a>
+
+    @if (CurrentUser.EsAdministrador)
+    {
+        <a href="#">
+
+            <span class="material-symbols-outlined">
+                group
+            </span>
+
+            Usuarios
+
+        </a>
+
+        <a href="#">
+
+            <span class="material-symbols-outlined">
+                security
+            </span>
+
+            Roles
+
+        </a>
+
+        <a href="#">
+
+            <span class="material-symbols-outlined">
+                admin_panel_settings
+            </span>
+
+            Permisos
+
+        </a>
+    }
+
+    @if (CurrentUser.EsSupervisor)
+    {
+        <a href="#">
+
+            <span class="material-symbols-outlined">
+                manage_search
+            </span>
+
+            Consultas
+
+        </a>
+
+        <a href="#">
+
+            <span class="material-symbols-outlined">
+                edit_square
+            </span>
+
+            Modificaciones
+
+        </a>
+    }
+
+    @if (CurrentUser.EsEjecutor)
+    {
+        <a href="#">
+
+            <span class="material-symbols-outlined">
+                search
+            </span>
+
+            Consultas
+
+        </a>
+
+        <a href="#">
+
+            <span class="material-symbols-outlined">
+                add_circle
+            </span>
+
+            Agregar
+
+        </a>
+    }
+
+</div>
+
+<div class="sidebar-footer">
+
+    <form id="logoutForm"
+          asp-controller="Login"
+          asp-action="Logout"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <button type="submit"
+                class="logout-button">
+
+            <span class="material-symbols-outlined">
+                logout
+            </span>
+
+            Cerrar Sesión
+
+        </button>
+
+    </form> 
+
+</div>

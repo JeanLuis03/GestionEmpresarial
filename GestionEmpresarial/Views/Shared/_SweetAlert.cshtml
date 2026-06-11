@@ -1,0 +1,18 @@
+﻿@if (TempData["SwalTitle"] != null)
+{
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function ()
+            {
+                Swal.fire({
+                    icon: '@TempData["SwalType"]',
+                    title: '@TempData["SwalTitle"]',
+                    text: '@TempData["SwalMessage"]',
+                    confirmButtonText: 'Aceptar'
+                });
+            });
+
+    </script>
+}
