@@ -38,6 +38,12 @@ namespace GestionEmpresarial.Helpers.Seed
                 "ejecutor@gestionempresarial.com",
                 "Ejecutor123*",
                 RolesSistema.Ejecutor);
+
+            await CrearUsuario(
+                "jean.perez",
+                "jean.perez@gestionempresarial.com",
+                "Jean03*",
+                RolesSistema.Administrador);
         }
 
         private async Task CrearUsuario(string nombreUsuario, string correo, string password, string nombreRol)
