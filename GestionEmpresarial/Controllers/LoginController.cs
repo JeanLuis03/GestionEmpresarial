@@ -88,7 +88,14 @@ namespace GestionEmpresarial.Controllers
             await HttpContext.SignOutAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme);
 
-            return RedirectToAction(nameof(Index));
+            TempData["SwalType"] = "success";
+
+            TempData["SwalTitle"] = "Sesión finalizada";
+
+            TempData["SwalMessage"] =
+                "Ha cerrado sesion correctamente.";
+
+            return RedirectToAction("Index", "Login");
         }
 
         [HttpGet]

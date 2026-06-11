@@ -1,0 +1,208 @@
+﻿:root {
+    --sidebar-bg: #111827;
+    --sidebar-hover: #1F2937;
+    --primary-color: #2563EB;
+    --topbar-bg: #FFFFFF;
+    --body-bg: #F3F4F6;
+    --text-light: #FFFFFF;
+    --text-dark: #1F2937;
+    --border-color: #E5E7EB;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background-color: var(--body-bg);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.material-symbols-outlined {
+    font-size: 22px;
+    vertical-align: middle;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.sidebar-menu {
+    flex: 1;
+    padding: 1rem;
+}
+
+    .sidebar-menu a {
+        display: flex;
+        align-items: center;
+        gap: .75rem;
+        text-decoration: none;
+        color: var(--text-light);
+        padding: .85rem 1rem;
+        border-radius: 10px;
+        margin-bottom: .5rem;
+        transition: .2s;
+    }
+
+        .sidebar-menu a:hover {
+            background-color: var(--sidebar-hover);
+        }
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.topbar {
+    height: 70px;
+    background-color: var(--topbar-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.user-info {
+    text-align: right;
+}
+
+.user-name {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.user-role {
+    font-size: .85rem;
+    color: #6B7280;
+}
+
+.user-date {
+    font-size: .80rem;
+    color: #9CA3AF;
+}
+
+.page-content {
+    padding: 2rem;
+}
+
+/*STYLE DASHBOARDS*/
+
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+    .dashboard-header h2 {
+        color: #111827;
+        font-weight: 700;
+    }
+
+    .dashboard-header p {
+        color: #6B7280;
+        margin-top: .5rem;
+    }
+
+.dashboard-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+    transition: .2s ease;
+    height: 100%;
+}
+
+    .dashboard-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .dashboard-card .material-symbols-outlined {
+        font-size: 40px;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+
+    .dashboard-card h5 {
+        font-weight: 600;
+        margin-bottom: .75rem;
+    }
+
+    .dashboard-card p {
+        color: #6B7280;
+        margin: 0;
+    }
+ 
+/*LOGOUT STYLES*/
+.sidebar-footer {
+    padding: 1rem;
+    border-top: 1px solid rgba(255,255,255,.1);
+}
+
+.logout-button {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .85rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+    .logout-button:hover {
+        background-color: #DC2626;
+    }
+
+/*PROFILE BUTTON STYLES*/
+.profile-button {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: .5rem 1rem;
+}
+
+    .profile-button:hover {
+        background-color: #F9FAFB;
+    }
+
+.profile-dropdown {
+    min-width: 260px;
+    border-radius: 14px;
+    border: none;
+    box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.dropdown-profile-item {
+    padding: .5rem 1rem;
+}
+
+    .dropdown-profile-item small {
+        display: block;
+        color: #6B7280;
+        margin-bottom: .25rem;
+    }
+
+    .dropdown-profile-item strong {
+        color: #111827;
+    }

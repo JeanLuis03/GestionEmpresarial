@@ -1,0 +1,94 @@
+﻿@using GestionEmpresarial.Helpers.Constants
+@inject GestionEmpresarial.Interfaces.ICurrentUserService CurrentUser
+
+<div class="row g-4">
+
+    @if (CurrentUser.EsAdministrador)
+    {
+        <div class="col-md-4">
+            <div class="dashboard-card">
+                <span class="material-symbols-outlined">
+                    group
+                </span>
+                <h5>Usuarios</h5>
+                <p>
+                    Gestión de usuarios del sistema.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="dashboard-card">
+                <span class="material-symbols-outlined">
+                    security
+                </span>
+                <h5>Roles</h5>
+                <p>
+                    Administración de roles.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="dashboard-card">
+                <span class="material-symbols-outlined">
+                    admin_panel_settings
+                </span>
+                <h5>Permisos</h5>
+                <p>
+                    Control de permisos del sistema.
+                </p>
+            </div>
+        </div>
+    }
+
+    @if (CurrentUser.EsSupervisor)
+    {
+        <div class="col-md-6">
+            <div class="dashboard-card">
+                <span class="material-symbols-outlined">
+                    manage_search
+                </span>
+                <h5>Consultas</h5>
+                <p>
+                    Consultar información disponible.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dashboard-card">
+                <span class="material-symbols-outlined">
+                    edit_square
+                </span>
+                <h5>Modificaciones</h5>
+                <p>
+                    Actualizar información permitida.
+                </p>
+            </div>
+        </div>
+    }
+
+    @if (CurrentUser.EsEjecutor)
+    {
+        <div class="col-md-6">
+            <div class="dashboard-card">
+                <span class="material-symbols-outlined">
+                    search
+                </span>
+                <h5>Consultas</h5>
+                <p>
+                    Consultar registros.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dashboard-card">
+                <span class="material-symbols-outlined">
+                    add_circle
+                </span>
+                <h5>Agregar</h5>
+                <p>
+                    Registrar nueva información.
+                </p>
+            </div>
+        </div>
+    }
+</div>

@@ -37,13 +37,16 @@ builder.Services
 
 // Agregar servicios al contenedor de dependencias
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IPasswordService, PasswordService>();
+builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddScoped<ISeeder, RolSeeder>();
 builder.Services.AddScoped<ISeeder, PermisoSeeder>();
 builder.Services.AddScoped<ISeeder, PermisoRolSeeder>();
 builder.Services.AddScoped<ISeeder, UsuarioSeeder>();
 builder.Services.AddAuthorization();
+
 
 
 var app = builder.Build();
