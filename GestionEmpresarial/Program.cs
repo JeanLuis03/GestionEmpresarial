@@ -34,6 +34,13 @@ builder.Services
         options.ExpireTimeSpan = TimeSpan.FromHours(3);
     });
 
+// Configuración de AutoMapper
+builder.Services.AddAutoMapper(cfg =>
+{
+    
+},
+typeof(Program));
+
 
 // Agregar servicios al contenedor de dependencias
 builder.Services.AddControllersWithViews();
@@ -45,6 +52,7 @@ builder.Services.AddScoped<ISeeder, RolSeeder>();
 builder.Services.AddScoped<ISeeder, PermisoSeeder>();
 builder.Services.AddScoped<ISeeder, PermisoRolSeeder>();
 builder.Services.AddScoped<ISeeder, UsuarioSeeder>();
+builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddAuthorization();
 
 
