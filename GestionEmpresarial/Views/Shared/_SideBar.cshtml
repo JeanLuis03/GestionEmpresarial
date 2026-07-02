@@ -24,66 +24,59 @@
 
     @if (User.TienePermiso(PermisosSistema.Consultar))
     {
+        <div class="sidebar-group">
 
-            <ul class="nav flex-column">
+            <div class="sidebar-group-title">
 
-                <li class="nav-item">
-                    <a asp-controller="Cliente"
-                       asp-action="Index"
-                       class="nav-link">
+                MANTENIMIENTOS
 
-                        <span class="material-symbols-outlined">
-                            groups
-                        </span>
+            </div>
 
-                        Clientes
+            <a asp-controller="Cliente"
+               asp-action="Index">
 
-                    </a>
-                </li>
+                <span class="material-symbols-outlined">
+                    groups
+                </span>
 
-                <li class="nav-item">
-                    <a asp-controller="Productos"
-                       asp-action="Index"
-                       class="nav-link">
+                Clientes
 
-                        <span class="material-symbols-outlined">
-                            inventory_2
-                        </span>
+            </a>
 
-                        Productos
+            <a asp-controller="Categoria"
+               asp-action="Index">
 
-                    </a>
-                </li>
+                <span class="material-symbols-outlined">
+                    category
+                </span>
 
-                <li class="nav-item">
-                    <a asp-controller="Categorias"
-                       asp-action="Index"
-                       class="nav-link">
+                Categorías
 
-                        <span class="material-symbols-outlined">
-                            category
-                        </span>
+            </a>
 
-                        Categorías
+            <a asp-controller="Producto"
+               asp-action="Index">
 
-                    </a>
-                </li>
+                <span class="material-symbols-outlined">
+                    inventory_2
+                </span>
 
-                <li class="nav-item">
-                    <a asp-controller="Usuarios"
-                       asp-action="Index"
-                       class="nav-link">
+                Productos
 
-                        <span class="material-symbols-outlined">
-                            manage_accounts
-                        </span>
+            </a>
 
-                        Usuarios
+            <a asp-controller="Usuario"
+               asp-action="Index">
 
-                    </a>
-                </li>
+                <span class="material-symbols-outlined">
+                    manage_accounts
+                </span>
 
-            </ul>
+                Usuarios
+
+            </a>
+
+        </div>
     }
 
 </div>
