@@ -1,0 +1,131 @@
+﻿<div class="modal fade"
+     id="clienteModal"
+     tabindex="-1"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 id="tituloModal"
+                    class="modal-title">
+
+                    Nuevo Cliente
+
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <form id="formCliente">
+
+                @Html.AntiForgeryToken()
+
+                <input id="Id"
+                       name="Id"
+                       type="hidden" />
+
+                <div class="modal-body">
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Nombre
+                            </label>
+
+                            <input id="Nombre"
+                                   name="Nombre"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Apellido
+                            </label>
+
+                            <input id="Apellido"
+                                   name="Apellido"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Teléfono
+                            </label>
+
+                            <input id="Telefono"
+                                   name="Telefono"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Correo
+                            </label>
+
+                            <input id="Correo"
+                                   name="Correo"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="col-12">
+
+                            <label class="form-label">
+                                Dirección
+                            </label>
+
+                            <input id="Direccion"
+                                      name="Direccion"
+                                      class="form-control" />
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+
+                        Cancelar
+
+                    </button>
+
+                    <button id="btnGuardar"
+                            type="submit"
+                            class="btn btn-primary">
+
+                        Guardar
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

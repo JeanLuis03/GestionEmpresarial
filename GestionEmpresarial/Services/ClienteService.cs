@@ -29,7 +29,7 @@ namespace GestionEmpresarial.Services
         {
             return await _context.Clientes.AnyAsync(c =>
                 c.Correo == correo &&
-                c.Activo &&
+                //c.Activo &&
                 (!clienteId.HasValue || c.Id != clienteId.Value));
         }
 

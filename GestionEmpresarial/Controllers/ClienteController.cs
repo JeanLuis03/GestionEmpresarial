@@ -1,10 +1,12 @@
 ﻿using GestionEmpresarial.Helpers.Responses;
 using GestionEmpresarial.Interfaces;
 using GestionEmpresarial.ViewModels.Clientes;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestionEmpresarial.Controllers
 {
+    [Authorize]
     public class ClienteController : Controller
     {
 
@@ -44,7 +46,7 @@ namespace GestionEmpresarial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Guardar(ClienteGuardarViewModel model)
+        public async Task<IActionResult> Guardar([FromBody] ClienteGuardarViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -71,9 +73,9 @@ namespace GestionEmpresarial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Eliminar(Guid id)
+        public async Task<IActionResult> Eliminar([FromBody] ClienteEliminarViewModel model)
         {
-            var resultado = await _clienteService.CambiarEstadoAsync(id);
+            var resultado = await _clienteService.CambiarEstadoAsync(model.Id);
 
             if (!resultado.Success)
             {
