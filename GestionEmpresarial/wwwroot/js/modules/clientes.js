@@ -3,6 +3,7 @@
 const ClientesModule = (() => {
 
     let modalCliente;
+    const btnNuevoCliente = document.getElementById("btnNuevoCliente");
 
     const init = () => {
 
@@ -18,9 +19,10 @@ const ClientesModule = (() => {
 
     const registrarEventos = () => {
 
-        document
-            .getElementById("btnNuevoCliente")
-            .addEventListener("click", abrirModalNuevo);
+        if (btnNuevoCliente) {
+
+            btnNuevoCliente.addEventListener("click", abrirModalNuevo);
+        }
 
         document
             .getElementById("formCliente")
@@ -275,74 +277,90 @@ const ClientesModule = (() => {
 
     };
 
+    const construirColumnas = () => {
+
+        const columnas = [
+            {
+                data: "nombreCompleto"
+            },
+            {
+                data: "telefono"
+            },
+            {
+                data: "correo"
+            }
+        ];
+
+        if (puedeEditar || puedeEliminar) {
+
+            columnas.push({
+                data: null,
+                orderable: false,
+                searchable: false,
+                render: renderAcciones
+            });
+
+        }
+
+        return columnas;
+
+    };
+
+    const renderAcciones = (data, type, row) => {
+
+        let acciones = "";
+
+        if (puedeEditar) {
+
+            acciones += `
+            <button
+                class="btn btn-warning btn-sm btn-editar"
+                data-id="${row.id}">
+
+                <span class="material-symbols-outlined">
+                    edit
+                </span>
+
+            </button>
+        `;
+
+        }
+
+        if (puedeEliminar) {
+
+            acciones += `
+            <button
+                class="btn btn-danger btn-sm btn-eliminar"
+                data-id="${row.id}">
+
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
+
+            </button>
+        `;
+
+        }
+
+        return acciones;
+
+    };
+
     const inicializarTabla = async () => {
+
+        const columnas = construirColumnas();
 
         tablaClientes = $("#tablaClientes").DataTable({
 
             responsive: true,
 
             language: {
-
                 url: "https://cdn.datatables.net/plug-ins/2.3.2/i18n/es-ES.json"
-
             },
 
             data: await obtenerClientes(),
 
-            columns: [
-
-                {
-                    data: "nombreCompleto"
-                },
-
-                {
-                    data: "telefono"
-                },
-
-                {
-                    data: "correo"
-                },
-
-                {
-                    data: null,
-
-                    orderable: false,
-
-                    searchable: false,
-
-                    render: function (data) {
-
-                        return `
-                        <div class="d-flex justify-content-center gap-2">
-
-                            <button
-                                class="btn btn-warning btn-sm btn-editar"
-                                data-id="${data.id}">
-
-                                <span class="material-symbols-outlined">
-                                    edit
-                                </span>
-
-                            </button>
-
-                            <button
-                                class="btn btn-danger btn-sm btn-eliminar"
-                                data-id="${data.id}">
-
-                                <span class="material-symbols-outlined">
-                                    delete
-                                </span>
-
-                            </button>
-
-                        </div>
-                    `;
-
-                    }
-
-                }
-
-            ]
+            columns: columnas
 
         });
 

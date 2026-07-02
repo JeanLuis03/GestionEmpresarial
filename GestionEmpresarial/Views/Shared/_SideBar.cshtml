@@ -1,5 +1,7 @@
 ﻿
 @inject GestionEmpresarial.Interfaces.ICurrentUserService CurrentUser
+@using GestionEmpresarial.Extensions
+@using GestionEmpresarial.Helpers.Constants
 
 <div class="sidebar-header">
 
@@ -20,83 +22,68 @@
 
     </a>
 
-    @if (CurrentUser.EsAdministrador)
+    @if (User.TienePermiso(PermisosSistema.Consultar))
     {
-        <a href="#">
 
-            <span class="material-symbols-outlined">
-                group
-            </span>
+            <ul class="nav flex-column">
 
-            Usuarios
+                <li class="nav-item">
+                    <a asp-controller="Cliente"
+                       asp-action="Index"
+                       class="nav-link">
 
-        </a>
+                        <span class="material-symbols-outlined">
+                            groups
+                        </span>
 
-        <a href="#">
+                        Clientes
 
-            <span class="material-symbols-outlined">
-                security
-            </span>
+                    </a>
+                </li>
 
-            Roles
+                <li class="nav-item">
+                    <a asp-controller="Productos"
+                       asp-action="Index"
+                       class="nav-link">
 
-        </a>
+                        <span class="material-symbols-outlined">
+                            inventory_2
+                        </span>
 
-        <a href="#">
+                        Productos
 
-            <span class="material-symbols-outlined">
-                admin_panel_settings
-            </span>
+                    </a>
+                </li>
 
-            Permisos
+                <li class="nav-item">
+                    <a asp-controller="Categorias"
+                       asp-action="Index"
+                       class="nav-link">
 
-        </a>
-    }
+                        <span class="material-symbols-outlined">
+                            category
+                        </span>
 
-    @if (CurrentUser.EsSupervisor)
-    {
-        <a href="#">
+                        Categorías
 
-            <span class="material-symbols-outlined">
-                manage_search
-            </span>
+                    </a>
+                </li>
 
-            Consultas
+                <li class="nav-item">
+                    <a asp-controller="Usuarios"
+                       asp-action="Index"
+                       class="nav-link">
 
-        </a>
+                        <span class="material-symbols-outlined">
+                            manage_accounts
+                        </span>
 
-        <a href="#">
+                        Usuarios
 
-            <span class="material-symbols-outlined">
-                edit_square
-            </span>
+                    </a>
+                </li>
 
-            Modificaciones
-
-        </a>
-    }
-
-    @if (CurrentUser.EsEjecutor)
-    {
-        <a href="#">
-
-            <span class="material-symbols-outlined">
-                search
-            </span>
-
-            Consultas
-
-        </a>
-
-        <a href="#">
-
-            <span class="material-symbols-outlined">
-                add_circle
-            </span>
-
-            Agregar
-
-        </a>
+            </ul>
     }
 
 </div>

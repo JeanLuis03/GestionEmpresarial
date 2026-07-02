@@ -22,6 +22,8 @@ namespace GestionEmpresarial.Services
         {
             var usuario = await _context.Usuarios
                 .Include(x => x.Rol)
+                .ThenInclude(r => r.PermisosRol)
+                .ThenInclude(p => p.Permiso)
                 .FirstOrDefaultAsync(x => x.NombreUsuario == model.NombreUsuario && x.Activo);
 
 

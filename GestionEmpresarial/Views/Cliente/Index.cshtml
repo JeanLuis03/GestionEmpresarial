@@ -1,4 +1,7 @@
-﻿@{
+﻿@using GestionEmpresarial.Extensions
+@using GestionEmpresarial.Helpers.Constants
+
+@{
 	ViewData["Title"] = "Clientes";
 }
 
@@ -22,16 +25,20 @@
 
 				</div>
 
-				<button id="btnNuevoCliente"
-						class="btn btn-primary">
+				@if (User.TienePermiso(PermisosSistema.Agregar))
+				{
 
-					<span class="material-symbols-outlined align-middle me-1">
-						person_add
-					</span>
+					<button id="btnNuevoCliente"
+							class="btn btn-primary">
 
-					Nuevo Cliente
+						<span class="material-symbols-outlined align-middle me-1">
+							person_add
+						</span>
 
-				</button>
+						Nuevo Cliente
+
+					</button>
+				}
 
 			</div>
 
@@ -51,10 +58,13 @@
 						<th>Teléfono</th>
 
 						<th>Correo</th>
+						@if (User.TienePermiso(PermisosSistema.Editar))
+						{
+							<th style="width:140px">
+								Acciones
+							</th>
 
-						<th style="width:140px">
-							Acciones
-						</th>
+						}
 
 					</tr>
 
@@ -72,6 +82,26 @@
 </div>
 
 <partial name="_clienteModal" />
+
+<script>
+
+	const puedeAgregar =
+		@(User.TienePermiso(PermisosSistema.Agregar)
+						? "true"
+						: "false");
+
+	const puedeEditar =
+		@(User.TienePermiso(PermisosSistema.Editar)
+						? "true"
+						: "false");
+
+	const puedeEliminar =
+		@(User.TienePermiso(PermisosSistema.Eliminar)
+						? "true"
+						: "false");
+
+</script>
+
 
 @section Scripts {
 

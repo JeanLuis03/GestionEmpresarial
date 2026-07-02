@@ -1,4 +1,6 @@
-﻿using GestionEmpresarial.Helpers.Responses;
+﻿using GestionEmpresarial.Attributes;
+using GestionEmpresarial.Helpers.Constants;
+using GestionEmpresarial.Helpers.Responses;
 using GestionEmpresarial.Interfaces;
 using GestionEmpresarial.ViewModels.Clientes;
 using Microsoft.AspNetCore.Authorization;
@@ -6,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GestionEmpresarial.Controllers
 {
-    [Authorize]
+    [PermissionAuthorize(PermisosSistema.Consultar)]
     public class ClienteController : Controller
     {
 
@@ -48,6 +50,16 @@ namespace GestionEmpresarial.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Guardar([FromBody] ClienteGuardarViewModel model)
         {
+            if (!User.HasClaim(
+                    ClaimTypesSistema.Permission,
+                    model.Id.HasValue
+                        ? PermisosSistema.Editar
+                        : PermisosSistema.Agregar))
+            {
+                return Forbid();
+            }
+
+
             if (!ModelState.IsValid)
             {
                 var errores = ModelState
@@ -73,6 +85,7 @@ namespace GestionEmpresarial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PermissionAuthorize(PermisosSistema.Eliminar)]
         public async Task<IActionResult> Eliminar([FromBody] ClienteEliminarViewModel model)
         {
             var resultado = await _clienteService.CambiarEstadoAsync(model.Id);
