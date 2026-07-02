@@ -54,6 +54,7 @@ builder.Services.AddScoped<ISeeder, PermisoSeeder>();
 builder.Services.AddScoped<ISeeder, PermisoRolSeeder>();
 builder.Services.AddScoped<ISeeder, UsuarioSeeder>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy(

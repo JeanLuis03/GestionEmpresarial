@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GestionEmpresarial.Models;
 using GestionEmpresarial.ViewModels.Clientes;
+using GestionEmpresarial.ViewModels.Categorias;
 
 namespace GestionEmpresarial.Mappings
 {
@@ -19,6 +20,14 @@ namespace GestionEmpresarial.Mappings
                     dest => dest.NombreCompleto,
                     opt => opt.MapFrom(src =>
                         $"{src.Nombre} {src.Apellido}"));
+
+            // Categorías
+            CreateMap<Categoria, CategoriaDetalleViewModel>();
+
+            CreateMap<Categoria, CategoriaGuardarViewModel>()
+                .ReverseMap();
+
+            CreateMap<Categoria, CategoriaListadoViewModel>();
         }
 
     }
