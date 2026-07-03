@@ -7,6 +7,8 @@ namespace GestionEmpresarial.Interfaces
     {
         Task<ApiResponse> ObtenerTodosAsync();
 
+        Task<ApiResponse> ObtenerActivasComboAsync();
+
         Task<ApiResponse> ObtenerPorIdAsync(Guid id);
 
         Task<ApiResponse> GuardarAsync(CategoriaGuardarViewModel model);

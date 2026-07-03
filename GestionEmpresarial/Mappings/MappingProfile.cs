@@ -2,6 +2,7 @@
 using GestionEmpresarial.Models;
 using GestionEmpresarial.ViewModels.Clientes;
 using GestionEmpresarial.ViewModels.Categorias;
+using GestionEmpresarial.ViewModels.Productos;
 
 namespace GestionEmpresarial.Mappings
 {
@@ -28,6 +29,20 @@ namespace GestionEmpresarial.Mappings
                 .ReverseMap();
 
             CreateMap<Categoria, CategoriaListadoViewModel>();
+
+            // Productos
+            CreateMap<Producto, ProductoDetalleViewModel>()
+                .ForMember(
+                    dest => dest.Categoria,
+                    opt => opt.MapFrom(src => src.Categoria != null ? src.Categoria.Nombre : string.Empty));
+
+            CreateMap<Producto, ProductoGuardarViewModel>()
+                .ReverseMap();
+
+            CreateMap<Producto, ProductoListadoViewModel>()
+                .ForMember(
+                    dest => dest.Categoria,
+                    opt => opt.MapFrom(src => src.Categoria != null ? src.Categoria.Nombre : string.Empty));
         }
 
     }

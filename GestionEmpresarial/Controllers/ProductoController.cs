@@ -2,19 +2,19 @@ using GestionEmpresarial.Attributes;
 using GestionEmpresarial.Helpers.Constants;
 using GestionEmpresarial.Helpers.Responses;
 using GestionEmpresarial.Interfaces;
-using GestionEmpresarial.ViewModels.Categorias;
+using GestionEmpresarial.ViewModels.Productos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestionEmpresarial.Controllers
 {
     [PermissionAuthorize(PermisosSistema.Consultar)]
-    public class CategoriaController : Controller
+    public class ProductoController : Controller
     {
-        private readonly ICategoriaService _categoriaService;
+        private readonly IProductoService _productoService;
 
-        public CategoriaController(ICategoriaService categoriaService)
+        public ProductoController(IProductoService productoService)
         {
-            _categoriaService = categoriaService;
+            _productoService = productoService;
         }
 
         public IActionResult Index()
@@ -25,15 +25,7 @@ namespace GestionEmpresarial.Controllers
         [HttpGet]
         public async Task<IActionResult> ObtenerTodos()
         {
-            var resultado = await _categoriaService.ObtenerTodosAsync();
-
-            return Ok(resultado.Data);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> ObtenerActivasCombo()
-        {
-            var resultado = await _categoriaService.ObtenerActivasComboAsync();
+            var resultado = await _productoService.ObtenerTodosAsync();
 
             return Ok(resultado.Data);
         }
@@ -41,7 +33,7 @@ namespace GestionEmpresarial.Controllers
         [HttpGet]
         public async Task<IActionResult> ObtenerPorId(Guid id)
         {
-            var resultado = await _categoriaService.ObtenerPorIdAsync(id);
+            var resultado = await _productoService.ObtenerPorIdAsync(id);
 
             if (!resultado.Success)
             {
@@ -53,7 +45,7 @@ namespace GestionEmpresarial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Guardar([FromBody] CategoriaGuardarViewModel model)
+        public async Task<IActionResult> Guardar([FromBody] ProductoGuardarViewModel model)
         {
             if (!User.HasClaim(
                     ClaimTypesSistema.Permission,
@@ -76,7 +68,7 @@ namespace GestionEmpresarial.Controllers
                         string.Join("<br>", errores)));
             }
 
-            var resultado = await _categoriaService.GuardarAsync(model);
+            var resultado = await _productoService.GuardarAsync(model);
 
             if (!resultado.Success)
             {
@@ -89,9 +81,9 @@ namespace GestionEmpresarial.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [PermissionAuthorize(PermisosSistema.Eliminar)]
-        public async Task<IActionResult> Eliminar([FromBody] CategoriaEliminarViewModel model)
+        public async Task<IActionResult> Eliminar([FromBody] ProductoEliminarViewModel model)
         {
-            var resultado = await _categoriaService.CambiarEstadoAsync(model.Id);
+            var resultado = await _productoService.CambiarEstadoAsync(model.Id);
 
             if (!resultado.Success)
             {
