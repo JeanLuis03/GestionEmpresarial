@@ -13,6 +13,8 @@ namespace GestionEmpresarial.DBContext
         public DbSet<Rol> Roles => Set<Rol>();
         public DbSet<Permiso> Permisos => Set<Permiso>();
         public DbSet<PermisosRol> PermisosRoles => Set<PermisosRol>();
+        public DbSet<Cliente> Clientes => Set<Cliente>();
+        public DbSet<Categoria> Categorias => Set<Categoria>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
