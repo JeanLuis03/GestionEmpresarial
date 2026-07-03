@@ -12,6 +12,36 @@
 
     };
 
+    const soloDecimales = (input) => {
+
+        input.addEventListener("input", () => {
+
+            let valor = input.value.replace(/[^0-9.,]/g, "");
+
+            valor = valor.replace(",", ".");
+
+            const partes = valor.split(".");
+
+            if (partes.length > 2) {
+
+                valor = `${partes[0]}.${partes.slice(1).join("")}`;
+
+            }
+
+            const [entero, decimal] = valor.split(".");
+
+            if (decimal !== undefined) {
+
+                valor = `${entero}.${decimal.substring(0, 2)}`;
+
+            }
+
+            input.value = valor;
+
+        });
+
+    };
+
     const soloNumeros = (input) => {
 
         input.addEventListener("input", () => {
@@ -61,6 +91,8 @@
         soloLetras,
 
         soloNumeros,
+
+        soloDecimales,
 
         limitarLongitud,
 

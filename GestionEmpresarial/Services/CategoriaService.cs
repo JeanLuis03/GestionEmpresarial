@@ -81,6 +81,22 @@ namespace GestionEmpresarial.Services
             return ApiResponse.Ok(data: resultado);
         }
 
+        public async Task<ApiResponse> ObtenerActivasComboAsync()
+        {
+            var categoriasActivas = await _context.Categorias
+                .AsNoTracking()
+                .Where(c => c.Activo)
+                .OrderBy(c => c.Nombre)
+                .Select(c => new
+                {
+                    id = c.Id,
+                    nombre = c.Nombre
+                })
+                .ToListAsync();
+
+            return ApiResponse.Ok(data: categoriasActivas);
+        }
+
         public async Task<ApiResponse> ObtenerPorIdAsync(Guid id)
         {
             var categoria = await _context.Categorias

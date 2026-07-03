@@ -1,0 +1,157 @@
+<div class="modal fade"
+	 id="productoModal"
+	 tabindex="-1"
+	 aria-hidden="true"
+	 data-bs-backdrop="static"
+	 data-bs-keyboard="false">
+
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+
+		<div class="modal-content">
+
+			<div class="modal-header">
+
+				<h5 id="tituloModal"
+					class="modal-title">
+
+					Nuevo Producto
+
+				</h5>
+
+				<button type="button"
+						class="btn-close"
+						data-bs-dismiss="modal">
+				</button>
+
+			</div>
+
+			<form id="formProducto">
+
+				@Html.AntiForgeryToken()
+
+				<input id="Id"
+					   name="Id"
+					   type="hidden" />
+
+				<div class="modal-body">
+
+					<div class="row">
+
+						<div class="col-md-6 mb-3">
+
+							<label class="form-label">
+								Código
+							</label>
+
+							<input id="Codigo"
+								   name="Codigo"
+								   class="form-control" />
+
+						</div>
+
+						<div class="col-md-6 mb-3">
+
+							<label class="form-label">
+								Nombre
+							</label>
+
+							<input id="Nombre"
+								   name="Nombre"
+								   class="form-control" />
+
+						</div>
+
+						<div class="col-md-6 mb-3">
+
+							<label class="form-label">
+								Marca
+							</label>
+
+							<input id="Marca"
+								   name="Marca"
+								   class="form-control" />
+
+						</div>
+
+						<div class="col-md-6 mb-3">
+
+							<label class="form-label">
+								Modelo
+							</label>
+
+							<input id="Modelo"
+								   name="Modelo"
+								   class="form-control" />
+
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							<label class="form-label">
+								Precio
+							</label>
+
+							<input id="Precio"
+								   name="Precio"
+								   class="form-control"
+								   inputmode="decimal" />
+
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							<label class="form-label">
+								Stock
+							</label>
+
+							<input id="Stock"
+								   name="Stock"
+								   class="form-control"
+								   inputmode="numeric" />
+
+						</div>
+
+						<div class="col-md-4 mb-3">
+
+							<label class="form-label">
+								Categoría
+							</label>
+
+							<select id="CategoriaId"
+									name="CategoriaId"
+									class="form-select">
+							</select>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="modal-footer">
+
+					<button type="button"
+							class="btn btn-secondary"
+							data-bs-dismiss="modal">
+
+						Cancelar
+
+					</button>
+
+					<button id="btnGuardar"
+							type="submit"
+							class="btn btn-primary">
+
+						Guardar
+
+					</button>
+
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>
