@@ -3,6 +3,8 @@ using GestionEmpresarial.Models;
 using GestionEmpresarial.ViewModels.Clientes;
 using GestionEmpresarial.ViewModels.Categorias;
 using GestionEmpresarial.ViewModels.Productos;
+using GestionEmpresarial.ViewModels.Roles;
+using GestionEmpresarial.ViewModels.Usuarios;
 
 namespace GestionEmpresarial.Mappings
 {
@@ -43,6 +45,29 @@ namespace GestionEmpresarial.Mappings
                 .ForMember(
                     dest => dest.Categoria,
                     opt => opt.MapFrom(src => src.Categoria != null ? src.Categoria.Nombre : string.Empty));
+
+            // Roles
+            CreateMap<Rol, RolComboViewModel>();
+
+            // Usuarios
+            CreateMap<Usuario, UsuarioDetalleViewModel>()
+                .ForMember(
+                    dest => dest.Rol,
+                    opt => opt.MapFrom(src => src.Rol != null ? src.Rol.Nombre : string.Empty));
+
+            CreateMap<Usuario, UsuarioListadoViewModel>()
+                .ForMember(
+                    dest => dest.Rol,
+                    opt => opt.MapFrom(src => src.Rol != null ? src.Rol.Nombre : string.Empty))
+                .ForMember(
+                    dest => dest.Estado,
+                    opt => opt.MapFrom(src => src.Activo ? "Activo" : "Inactivo"))
+                .ForMember(
+                    dest => dest.UltimaFecha,
+                    opt => opt.MapFrom(src => src.FechaModificacion ?? src.FechaCreacion));
+
+            CreateMap<Usuario, UsuarioGuardarViewModel>()
+                .ReverseMap();
         }
 
     }

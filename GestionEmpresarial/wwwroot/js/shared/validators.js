@@ -12,6 +12,30 @@
 
     };
 
+    const soloUsuario = (input) => {
+
+        input.addEventListener("input", () => {
+
+            input.value = input.value.replace(
+                /[^a-zA-Z0-9._-]/g,
+                "");
+
+        });
+
+    };
+
+    const soloCorreo = (input) => {
+
+        input.addEventListener("input", () => {
+
+            input.value = input.value.replace(
+                /[^a-zA-Z0-9@._+\-]/g,
+                "");
+
+        });
+
+    };
+
     const soloDecimales = (input) => {
 
         input.addEventListener("input", () => {
@@ -89,6 +113,10 @@
     return {
 
         soloLetras,
+
+        soloUsuario,
+
+        soloCorreo,
 
         soloNumeros,
 
