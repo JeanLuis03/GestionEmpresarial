@@ -155,7 +155,7 @@ const CategoriasModule = (() => {
 
         document
             .getElementById("tituloModal")
-            .textContent = "Nueva Categoría";
+            .textContent = "Registrar Categoría";
 
         document
             .getElementById("btnGuardar")
@@ -183,7 +183,7 @@ const CategoriasModule = (() => {
 
         document
             .getElementById("tituloModal")
-            .textContent = "Nueva Categoría";
+            .textContent = "Registrar Categoría";
 
         document
             .getElementById("btnGuardar")
@@ -274,7 +274,7 @@ const CategoriasModule = (() => {
 
             acciones += `
             <button
-                class="btn btn-warning btn-sm btn-editar"
+                class="btn btn-outline-warning btn-sm btn-editar"
                 data-id="${row.id}">
 
                 <span class="material-symbols-outlined">
@@ -290,7 +290,7 @@ const CategoriasModule = (() => {
 
             acciones += `
             <button
-                class="btn btn-danger btn-sm btn-eliminar"
+                class="btn btn-outline-danger btn-sm btn-eliminar"
                 data-id="${row.id}">
 
                 <span class="material-symbols-outlined">
@@ -302,7 +302,13 @@ const CategoriasModule = (() => {
 
         }
 
-        return acciones;
+        return `
+            <div class="d-flex justify-content-center align-items-center gap-2">
+
+                ${acciones}
+
+            </div>
+        `;
 
     };
 
@@ -313,7 +319,14 @@ const CategoriasModule = (() => {
         tablaCategorias = $("#tablaCategorias").DataTable({
 
             responsive: true,
-
+            autoWidth: false,
+            scrollX: true,
+            processing: true,
+            pageLength: 10,
+            lengthMenu: [
+                [10, 25, 50, 100],
+                [10, 25, 50, 100]
+            ],
             language: {
                 url: "https://cdn.datatables.net/plug-ins/2.3.2/i18n/es-ES.json"
             },

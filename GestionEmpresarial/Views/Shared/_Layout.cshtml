@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.min.css">
 	<link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/erp-theme.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/GestionEmpresarial.styles.css" asp-append-version="true" />
 	@* 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> *@
@@ -32,14 +33,16 @@
 							type="button"
 							data-bs-toggle="dropdown"
 							aria-expanded="false">
-						<span class="material-symbols-outlined">
-							account_circle
-						</span>
+						<div class="profile-avatar">
+
+							@CurrentUser.NombreUsuario.Substring(0, 1).ToUpper()
+
+						</div>
 						@CurrentUser.NombreUsuario
 					</button>
 
 					<ul class="dropdown-menu dropdown-menu-end profile-dropdown">
-					</li>
+
 					<li>
 						<div class="dropdown-profile-item">
 							<small>Rol</small>

@@ -210,7 +210,7 @@ const ProductosModule = (() => {
 
         document
             .getElementById("tituloModal")
-            .textContent = "Nuevo Producto";
+            .textContent = "Registrar Producto";
 
         document
             .getElementById("btnGuardar")
@@ -232,7 +232,7 @@ const ProductosModule = (() => {
 
         document
             .getElementById("tituloModal")
-            .textContent = "Nuevo Producto";
+            .textContent = "Registrar Producto";
 
         document
             .getElementById("btnGuardar")
@@ -398,7 +398,7 @@ const ProductosModule = (() => {
 
             acciones += `
             <button
-                class="btn btn-warning btn-sm btn-editar"
+                class="btn btn-outline-warning btn-sm btn-editar"
                 data-id="${row.id}">
 
                 <span class="material-symbols-outlined">
@@ -414,7 +414,7 @@ const ProductosModule = (() => {
 
             acciones += `
             <button
-                class="btn btn-danger btn-sm btn-eliminar"
+                class="btn btn-outline-danger btn-sm btn-eliminar"
                 data-id="${row.id}">
 
                 <span class="material-symbols-outlined">
@@ -426,7 +426,13 @@ const ProductosModule = (() => {
 
         }
 
-        return acciones;
+        return `
+            <div class="d-flex justify-content-center align-items-center gap-2">
+
+                ${acciones}
+
+            </div>
+        `;
 
     };
 
@@ -437,7 +443,14 @@ const ProductosModule = (() => {
         tablaProductos = $("#tablaProductos").DataTable({
 
             responsive: true,
-
+            autoWidth: false,
+            scrollX: true,
+            processing: true,
+            pageLength: 10,
+            lengthMenu: [
+                [10, 25, 50, 100],
+                [10, 25, 50, 100]
+            ],
             language: {
                 url: "https://cdn.datatables.net/plug-ins/2.3.2/i18n/es-ES.json"
             },

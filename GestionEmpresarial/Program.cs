@@ -56,6 +56,8 @@ builder.Services.AddScoped<ISeeder, UsuarioSeeder>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 builder.Services.AddScoped<IProductoService, ProductoService>();
+builder.Services.AddScoped<IRolService, RolService>();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy(

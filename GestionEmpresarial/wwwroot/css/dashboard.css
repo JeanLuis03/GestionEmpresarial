@@ -23,23 +23,45 @@ body {
 }
 
 .app-container {
-    display: flex;
     min-height: 100vh;
 }
 
-.sidebar {
-    width: 260px;
-    background-color: var(--sidebar-bg);
-    color: var(--text-light);
+.main-content {
+    margin-left: 270px;
+    flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+}
+
+.page-content {
+    margin-top: 78px;
+    padding: 2rem;
+    flex: 1;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(180deg,#111827 0%,#172554 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 1030;
+    box-shadow: 4px 0 20px rgba(0,0,0,.08);
 }
 
 .sidebar-header {
-    padding: 1.5rem;
-    font-size: 1.25rem;
-    font-weight: 600;
-    border-bottom: 1px solid rgba(255,255,255,.1);
+    padding: 30px 24px;
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
 .sidebar-menu {
@@ -50,17 +72,25 @@ body {
     .sidebar-menu a {
         display: flex;
         align-items: center;
-        gap: .75rem;
+        gap: 14px;
+        color: #D1D5DB;
         text-decoration: none;
-        color: var(--text-light);
-        padding: .85rem 1rem;
-        border-radius: 10px;
-        margin-bottom: .5rem;
-        transition: .2s;
+        padding: 12px 18px;
+        margin-bottom: .6rem;
+        border-radius: 14px;
+        transition: .25s;
+        font-weight: 500;
     }
 
         .sidebar-menu a:hover {
-            background-color: var(--sidebar-hover);
+            background: rgba(255,255,255,.08);
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .sidebar-menu a.active {
+            background: #ffffff;
+            color: black;
         }
 
 .sidebar-group {
@@ -76,20 +106,25 @@ body {
     text-transform: uppercase;
 }
 
-.main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+.sidebar,
+.topbar {
+    transition: all .25s ease;
 }
 
 .topbar {
-    height: 70px;
-    background-color: var(--topbar-bg);
-    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    top: 0;
+    left: 270px;
+    right: 0;
+    height: 78px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E5E7EB;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 0 2rem;
+    padding: 0 32px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.04);
+    z-index: 1020;
 }
 
 .user-info {
@@ -162,52 +197,67 @@ body {
  
 /*LOGOUT STYLES*/
 .sidebar-footer {
-    padding: 1rem;
-    border-top: 1px solid rgba(255,255,255,.1);
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,.08);
 }
 
 .logout-button {
     width: 100%;
-    border: none;
-    background: transparent;
-    color: white;
     display: flex;
     align-items: center;
-    gap: .75rem;
-    padding: .85rem 1rem;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: .2s;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(255,255,255,.05);
+    border: none;
+    color: white;
+    border-radius: 14px;
+    padding: 14px;
+    transition: .25s;
 }
 
     .logout-button:hover {
-        background-color: #DC2626;
+        background-color: #a32425;
     }
 
 /*PROFILE BUTTON STYLES*/
 .profile-button {
     display: flex;
     align-items: center;
-    gap: .5rem;
-    background-color: white;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: .5rem 1rem;
+    gap: 14px;
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    padding: 8px 14px;
+    transition: .25s;
 }
 
     .profile-button:hover {
-        background-color: #F9FAFB;
+        box-shadow: 0 5px 15px rgba(0,0,0,.08);
     }
 
+
+.profile-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #111b2b;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
 .profile-dropdown {
-    min-width: 260px;
-    border-radius: 14px;
+    min-width: 300px;
     border: none;
-    box-shadow: 0 8px 25px rgba(0,0,0,.08);
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0,0,0,.12);
+    overflow: hidden;
 }
 
 .dropdown-profile-item {
-    padding: .5rem 1rem;
+    padding: 0px 22px;
 }
 
     .dropdown-profile-item small {

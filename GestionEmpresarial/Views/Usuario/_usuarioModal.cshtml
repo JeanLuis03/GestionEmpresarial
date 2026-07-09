@@ -1,5 +1,5 @@
 <div class="modal fade"
-	 id="productoModal"
+	 id="usuarioModal"
 	 tabindex="-1"
 	 aria-hidden="true"
 	 data-bs-backdrop="static"
@@ -14,7 +14,7 @@
 				<h5 id="tituloModal"
 					class="modal-title">
 
-					Nuevo Producto
+					Registro de Usuario
 
 				</h5>
 
@@ -25,7 +25,7 @@
 
 			</div>
 
-			<form id="formProducto" class="row g-2">
+			<form id="formUsuario" class="row g-2">
 
 				@Html.AntiForgeryToken()
 
@@ -40,11 +40,11 @@
 						<div class="col-md-6 mb-3">
 
 							<label class="form-label">
-								Código
+								Usuario
 							</label>
 
-							<input id="Codigo"
-								   name="Codigo"
+							<input id="NombreUsuario"
+								   name="NombreUsuario"
 								   class="form-control" />
 
 						</div>
@@ -52,11 +52,11 @@
 						<div class="col-md-6 mb-3">
 
 							<label class="form-label">
-								Nombre
+								Correo
 							</label>
 
-							<input id="Nombre"
-								   name="Nombre"
+							<input id="Correo"
+								   name="Correo"
 								   class="form-control" />
 
 						</div>
@@ -64,11 +64,12 @@
 						<div class="col-md-6 mb-3">
 
 							<label class="form-label">
-								Marca
+								Contraseña
 							</label>
 
-							<input id="Marca"
-								   name="Marca"
+							<input id="Contrasena"
+								   name="Contrasena"
+								   type="password"
 								   class="form-control" />
 
 						</div>
@@ -76,49 +77,11 @@
 						<div class="col-md-6 mb-3">
 
 							<label class="form-label">
-								Modelo
+								Rol
 							</label>
 
-							<input id="Modelo"
-								   name="Modelo"
-								   class="form-control" />
-
-						</div>
-
-						<div class="col-md-4 mb-3">
-
-							<label class="form-label">
-								Precio
-							</label>
-
-							<input id="Precio"
-								   name="Precio"
-								   class="form-control"
-								   inputmode="decimal" />
-
-						</div>
-
-						<div class="col-md-4 mb-3">
-
-							<label class="form-label">
-								Stock
-							</label>
-
-							<input id="Stock"
-								   name="Stock"
-								   class="form-control"
-								   inputmode="numeric" />
-
-						</div>
-
-						<div class="col-md-4 mb-3">
-
-							<label class="form-label">
-								Categoría
-							</label>
-
-							<select id="CategoriaId"
-									name="CategoriaId"
+							<select id="IdRol"
+									name="IdRol"
 									class="form-select">
 							</select>
 

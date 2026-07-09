@@ -1,8 +1,10 @@
 @using GestionEmpresarial.Extensions
 @using GestionEmpresarial.Helpers.Constants
+@using GestionEmpresarial.Interfaces
+@inject ICurrentUserService CurrentUser
 
 @{
-	ViewData["Title"] = "Productos";
+	ViewData["Title"] = "Usuarios";
 }
 
 <div class="container-fluid">
@@ -16,11 +18,11 @@
 				<div>
 
 					<h3 class="page-title">
-						Gestión de Productos
+						Gestión de Usuarios
 					</h3>
 
 					<small class="page-subtitle mb-0">
-						Administración de productos registrados.
+						Administración de usuarios registrados.
 					</small>
 
 				</div>
@@ -28,14 +30,14 @@
 				@if (User.TienePermiso(PermisosSistema.Agregar))
 				{
 
-					<button id="btnNuevoProducto"
+					<button id="btnNuevoUsuario"
 							class="btn btn-primary shadow-sm">
 
 						<span class="material-symbols-outlined align-middle me-1">
 							add
 						</span>
 
-						Nuevo Producto
+						Nuevo Usuario
 
 					</button>
 				}
@@ -46,29 +48,25 @@
 
 		<div class="card-body">
 
-			<table id="tablaProductos"
+			<table id="tablaUsuarios"
 				   class="table table-hover table-bordered align-middle w-100">
 
 				<thead>
 
 					<tr>
 
-						<th>Código</th>
+						<th>Usuario</th>
 
-						<th>Nombre</th>
+						<th>Correo</th>
 
-						<th>Marca</th>
+						<th>Rol</th>
 
-						<th>Modelo</th>
+						<th>Estado</th>
 
-						<th>Categoría</th>
-
-						<th>Precio</th>
-
-						<th>Stock</th>
-						@if (User.TienePermiso(PermisosSistema.Editar))
+						<th>Última Fecha</th>
+						@if (User.TienePermiso(PermisosSistema.Editar) || User.TienePermiso(PermisosSistema.Eliminar))
 						{
-							<th style="width:140px">
+							<th style="width:180px">
 								Acciones
 							</th>
 
@@ -89,7 +87,7 @@
 
 </div>
 
-<partial name="_productoModal" />
+<partial name="_usuarioModal" />
 
 <script>
 
@@ -108,10 +106,15 @@
 						? "true"
 						: "false");
 
+	const usuarioActualId = "@CurrentUser.UsuarioId";
+
+	const esAdministrador =
+		@(CurrentUser.EsAdministrador ? "true" : "false");
+
 </script>
 
 @section Scripts {
 
-	<script src="~/js/modules/productos.js"></script>
+	<script src="~/js/modules/usuarios.js"></script>
 
 }
