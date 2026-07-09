@@ -198,7 +198,7 @@ const UsuariosModule = (() => {
 
         document
             .getElementById("tituloModal")
-            .textContent = "Nuevo Usuario";
+            .textContent = "Registrar Usuario";
 
         document
             .getElementById("btnGuardar")
@@ -220,7 +220,7 @@ const UsuariosModule = (() => {
 
         document
             .getElementById("tituloModal")
-            .textContent = "Nuevo Usuario";
+            .textContent = "Registrar Usuario";
 
         document
             .getElementById("btnGuardar")
@@ -390,7 +390,7 @@ const UsuariosModule = (() => {
         const esActivo = estado === "Activo";
 
         return `
-            <span class="badge ${esActivo ? "text-bg-success" : "text-bg-secondary"}">
+            <span class="badge ${esActivo ? "badge-active" : "badge-inactive"}">
                 ${estado}
             </span>
         `;
@@ -446,7 +446,13 @@ const UsuariosModule = (() => {
 
         }
 
-        return acciones;
+        return `
+            <div class="d-flex justify-content-center align-items-center gap-2">
+
+                ${acciones}
+
+            </div>
+        `;
 
     };
 
@@ -459,6 +465,12 @@ const UsuariosModule = (() => {
             responsive: true,
             autoWidth: false,
             scrollX: true,
+            processing: true,
+            pageLength: 10,
+            lengthMenu: [
+                [10, 25, 50, 100],
+                [10, 25, 50, 100]
+            ],
             language: {
                 url: "https://cdn.datatables.net/plug-ins/2.3.2/i18n/es-ES.json"
             },

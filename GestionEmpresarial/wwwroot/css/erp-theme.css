@@ -96,16 +96,18 @@ body {
 ==================================================*/
 
 .btn-sm {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
 }
 
     .btn-sm .material-symbols-outlined {
         font-size: 20px;
+        line-height: 1;
     }
 
 /*==================================================
@@ -114,24 +116,39 @@ body {
 
 .form-control,
 .form-select {
-    height: 46px;
+    height: 48px;
     border-radius: 12px;
-    border: 1px solid var(--border);
+    border: 1px solid #D1D5DB;
+    padding: 0 16px;
+    transition: .25s;
+    box-shadow: none;
 }
 
     .form-control:focus,
     .form-select:focus {
-        box-shadow: 0 0 0 .18rem rgba(37,99,235,.15);
-        border-color: var(--primary);
+        border-color: #2563EB;
+        box-shadow: 0 0 0 .2rem rgba(37,99,235,.12);
     }
+
+textarea.form-control {
+    min-height: 110px;
+    resize: none;
+    padding-top: 14px;
+}
+
+.form-select {
+    cursor: pointer;
+}
 
 /*==================================================
 =            LABELS
 ==================================================*/
 
 .form-label {
+    margin-bottom: 8px;
+    font-size: .92rem;
     font-weight: 600;
-    color: var(--text);
+    color: #374151;
 }
 
 /*==================================================
@@ -145,16 +162,39 @@ body {
 }
 
 .modal-header {
-    background: white;
-    border-bottom: 1px solid var(--border);
-    padding: 1.25rem 1.5rem;
+    padding: 20px 24px;
+    border-bottom: 1px solid #E5E7EB;
+    background: linear-gradient(90deg,#111827,#172554);
+}
+
+.modal-title {
+    font-weight: 700;
+    color: white;
+    font-size: 1.2rem;
 }
 
 .modal-footer {
-    border-top: 1px solid var(--border);
-    padding: 1rem 1.5rem;
+    padding: 18px 24px;
+    border-top: 1px solid #E5E7EB;
+    background: #FAFAFA;
+}
+    .modal-footer .btn {
+        min-width: 120px;
+    }
+
+.btn-close {
+    transition: .25s;
+    color: white !important;
 }
 
+    .btn-close:hover {
+        transform: rotate(90deg);
+
+    }
+
+.modal-body {
+    padding: 24px;
+}
 /*==================================================
 =            BADGES
 ==================================================*/
@@ -173,4 +213,102 @@ body {
     padding: .45rem .9rem;
     border-radius: 999px;
     font-weight: 600;
+}
+
+/*==================================================
+=               DATATABLES
+==================================================*/
+
+.dataTables_wrapper {
+    font-size: .95rem;
+}
+
+.dataTables_filter {
+    margin-bottom: 20px;
+}
+
+    .dataTables_filter label {
+        width: 100%;
+        font-weight: 600;
+        color: var(--text);
+    }
+
+    .dataTables_filter input {
+        margin-left: 12px !important;
+        width: 320px !important;
+        height: 42px;
+        border-radius: 50px !important;
+        border: 1px solid var(--border) !important;
+        padding: 0 14px;
+        transition: .2s;
+    }
+
+        .dataTables_filter input:focus {
+            outline: none;
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 0 .18rem rgba(37,99,235,.15);
+        }
+
+table.dataTable thead th {
+    background: #F8FAFC;
+    color: #334155;
+    font-weight: 700;
+    border-bottom: 1px solid #E5E7EB !important;
+    padding: 16px;
+}
+
+table.dataTable tbody td {
+    padding: 16px;
+    vertical-align: middle;
+}
+
+table.dataTable tbody tr {
+    transition: .15s;
+}
+
+    table.dataTable tbody tr:hover {
+        background: #F8FAFC;
+    }
+
+.dataTables_paginate {
+    margin-top: 20px;
+}
+
+.dataTables_wrapper .paginate_button {
+    border-radius: 10px !important;
+    margin: 0 3px;
+    transition: .2s;
+}
+
+    .dataTables_wrapper .paginate_button.current {
+        background: #2563EB !important;
+        color: white !important;
+        border: none !important;
+    }
+
+    .dataTables_wrapper .paginate_button:hover {
+        background: #1D4ED8 !important;
+        color: white !important;
+        border: none !important;
+    }
+
+.dataTables_length {
+    margin-bottom: 18px;
+}
+
+    .dataTables_length select {
+        border-radius: 10px;
+        padding: 6px 12px;
+        border: 1px solid #D1D5DB;
+    }
+
+.dataTables_info {
+    color: #64748B;
+    padding-top: 20px !important;
+}
+
+.dataTables_empty {
+    padding: 60px !important;
+    color: #94A3B8;
+    font-size: 1rem;
 }

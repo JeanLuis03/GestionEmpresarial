@@ -171,7 +171,7 @@ const ClientesModule = (() => {
 
         document
             .getElementById("tituloModal")
-            .textContent = "Nuevo Cliente";
+            .textContent = "Registrar Cliente";
 
         document
             .getElementById("btnGuardar")
@@ -199,7 +199,7 @@ const ClientesModule = (() => {
 
         document
             .getElementById("tituloModal")
-            .textContent = "Nuevo Cliente";
+            .textContent = "Registrar Cliente";
 
         document
             .getElementById("btnGuardar")
@@ -342,7 +342,13 @@ const ClientesModule = (() => {
 
         }
 
-        return acciones;
+        return `
+            <div class="d-flex justify-content-center align-items-center gap-2">
+
+                ${acciones}
+
+            </div>
+        `;
 
     };
 
@@ -354,8 +360,13 @@ const ClientesModule = (() => {
 
             responsive: true,
             autoWidth: false,
-
             scrollX: true,
+            processing: true,
+            pageLength: 10,
+            lengthMenu: [
+                [10, 25, 50, 100],
+                [10, 25, 50, 100]
+            ],
 
             language: {
                 url: "https://cdn.datatables.net/plug-ins/2.3.2/i18n/es-ES.json"
