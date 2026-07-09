@@ -46,7 +46,7 @@
 
             showCancelButton: true,
 
-            confirmButtonText: "Eliminar",
+            confirmButtonText: "Confirmar",
 
             cancelButtonText: "Cancelar",
 

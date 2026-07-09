@@ -417,7 +417,7 @@ const UsuariosModule = (() => {
 
             acciones += `
             <button
-                class="btn btn-warning btn-sm btn-editar"
+                class="btn btn-outline-warning btn-sm btn-editar"
                 data-id="${row.id}">
 
                 <span class="material-symbols-outlined">
@@ -433,12 +433,12 @@ const UsuariosModule = (() => {
 
             acciones += `
             <button
-                class="btn ${row.activo ? "btn-danger" : "btn-success"} btn-sm btn-estado"
+                class="btn ${row.activo ? "btn-success" : "btn-danger"} btn-sm btn-estado"
                 data-id="${row.id}"
                 data-activo="${row.activo}">
 
                 <span class="material-symbols-outlined">
-                    ${row.activo ? "toggle_off" : "toggle_on"}
+                    ${row.activo ? "toggle_on" : "toggle_off"}
                 </span>
 
             </button>
@@ -457,7 +457,8 @@ const UsuariosModule = (() => {
         tablaUsuarios = $("#tablaUsuarios").DataTable({
 
             responsive: true,
-
+            autoWidth: false,
+            scrollX: true,
             language: {
                 url: "https://cdn.datatables.net/plug-ins/2.3.2/i18n/es-ES.json"
             },

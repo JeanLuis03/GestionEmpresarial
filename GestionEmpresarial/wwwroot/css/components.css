@@ -1,0 +1,35 @@
+﻿:root {
+    --primary: #2563EB;
+    --primary-dark: #1D4ED8;
+    --success: #16A34A;
+    --warning: #F59E0B;
+    --danger: #DC2626;
+    --body: #F4F7FC;
+    --card: #FFFFFF;
+    --text: #1F2937;
+    --text-light: #6B7280;
+    --border: #E5E7EB;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,.04);
+    --shadow-md: 0 8px 24px rgba(0,0,0,.08);
+    --radius: 16px;
+}
+
+/*CARDS ERP*/
+.erp-card {
+    background: white;
+    border: none;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: .25s;
+}
+    .erp-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+
+/*BUTTONS*/
+.erp-btn {
+    height: 44px;
+    border-radius: 12px;
+    font-weight: 600;
+}

@@ -12,7 +12,7 @@
 <div class="sidebar-menu">
 
     <a asp-controller="Home"
-       asp-action="Index">
+       asp-action="Index" class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" ? "active" : "")">
 
         <span class="material-symbols-outlined">
             dashboard
@@ -33,7 +33,7 @@
             </div>
 
             <a asp-controller="Cliente"
-               asp-action="Index">
+               asp-action="Index" class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Cliente" ? "active" : "")">
 
                 <span class="material-symbols-outlined">
                     groups
@@ -44,7 +44,7 @@
             </a>
 
             <a asp-controller="Categoria"
-               asp-action="Index">
+               asp-action="Index" class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Categoria" ? "active" : "")">
 
                 <span class="material-symbols-outlined">
                     category
@@ -55,7 +55,7 @@
             </a>
 
             <a asp-controller="Producto"
-               asp-action="Index">
+               asp-action="Index" class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Producto" ? "active" : "")">
 
                 <span class="material-symbols-outlined">
                     inventory_2
@@ -66,7 +66,7 @@
             </a>
 
             <a asp-controller="Usuario"
-               asp-action="Index">
+               asp-action="Index" class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Usuario" ? "active" : "")">
 
                 <span class="material-symbols-outlined">
                     manage_accounts

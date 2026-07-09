@@ -23,7 +23,7 @@ namespace GestionEmpresarial.Services
         {
             var roles = await _context.Roles
                 .AsNoTracking()
-                .Where(r => r.Activo)
+                .Where(r => r.Activo && r.Nombre != "Administrador")
                 .OrderBy(r => r.Nombre)
                 .ToListAsync();
 

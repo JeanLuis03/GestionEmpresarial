@@ -314,7 +314,7 @@ const ClientesModule = (() => {
 
             acciones += `
             <button
-                class="btn btn-warning btn-sm btn-editar"
+                class="btn btn-outline-warning btn-sm btn-editar"
                 data-id="${row.id}">
 
                 <span class="material-symbols-outlined">
@@ -330,7 +330,7 @@ const ClientesModule = (() => {
 
             acciones += `
             <button
-                class="btn btn-danger btn-sm btn-eliminar"
+                class="btn btn-outline-danger btn-sm btn-eliminar"
                 data-id="${row.id}">
 
                 <span class="material-symbols-outlined">
@@ -353,6 +353,9 @@ const ClientesModule = (() => {
         tablaClientes = $("#tablaClientes").DataTable({
 
             responsive: true,
+            autoWidth: false,
+
+            scrollX: true,
 
             language: {
                 url: "https://cdn.datatables.net/plug-ins/2.3.2/i18n/es-ES.json"
