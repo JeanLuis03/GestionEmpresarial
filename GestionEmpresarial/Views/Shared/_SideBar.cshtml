@@ -76,6 +76,23 @@
 
             </a>
 
+            <div class="sidebar-group-title mt-3">
+
+                REPORTES
+
+            </div>
+
+            <a asp-controller="Reporte"
+               asp-action="Productos" class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Reporte" ? "active" : "")">
+
+                <span class="material-symbols-outlined">
+                    assessment
+                </span>
+
+                Productos
+
+            </a>
+
         </div>
     }
 
