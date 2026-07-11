@@ -1,0 +1,57 @@
+@{
+	ViewData["Title"] = "Reportes";
+}
+
+<div class="container-fluid">
+
+	<div class="card shadow-sm border-0">
+
+		<div class="card-header bg-white">
+
+			<h3 class="page-title mb-1">
+				Reportes
+			</h3>
+
+			<small class="page-subtitle mb-0">
+				Acceso a los reportes disponibles del ERP.
+			</small>
+
+		</div>
+
+		<div class="card-body">
+
+			<div class="row g-3">
+
+				<div class="col-12 col-lg-6">
+
+					<a asp-controller="Reporte"
+					   asp-action="Productos"
+					   class="text-decoration-none">
+
+						<div class="card h-100 border-0 shadow-sm report-card">
+
+							<div class="card-body">
+
+								<h5 class="card-title mb-2">
+									Productos
+								</h5>
+
+								<p class="card-text mb-0 text-muted">
+									Genera el listado completo de productos registrados en el sistema utilizando SQL Server Reporting Services.
+								</p>
+
+							</div>
+
+						</div>
+
+					</a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

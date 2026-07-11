@@ -1,0 +1,55 @@
+@{
+	ViewData["Title"] = "Reporte de Productos";
+}
+
+<div class="container-fluid">
+
+	<div class="card shadow-sm border-0">
+
+		<div class="card-header bg-white">
+
+			<div class="d-flex justify-content-between align-items-center">
+
+				<div>
+
+					<h3 class="page-title">
+						Reporte de Productos
+					</h3>
+
+					<small class="page-subtitle mb-0">
+						Genera el listado completo de productos registrados en el sistema utilizando SQL Server Reporting Services.
+					</small>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="card-body">
+
+			<div class="d-flex justify-content-center py-4">
+
+				<button id="btnGenerarReporte"
+						class="btn btn-primary shadow-sm px-4">
+
+					<span class="material-symbols-outlined align-middle me-1">
+						open_in_new
+					</span>
+
+					Generar Reporte
+				</button>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+@section Scripts {
+
+	<script src="~/js/modules/reportes.js"></script>
+
+}
