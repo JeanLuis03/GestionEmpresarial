@@ -1,0 +1,82 @@
+<div class="modal fade"
+	 id="categoriaModal"
+	 tabindex="-1"
+	 aria-hidden="true"
+	 data-bs-backdrop="static"
+	 data-bs-keyboard="false">
+
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+
+		<div class="modal-content">
+
+			<div class="modal-header">
+
+				<h5 id="tituloModal"
+					class="modal-title">
+
+					Nueva Categoría
+
+				</h5>
+
+				<button type="button"
+						class="btn-close btn-close-white"
+						data-bs-dismiss="modal">
+				</button>
+
+			</div>
+
+			<form id="formCategoria" class="row g-2">
+
+				@Html.AntiForgeryToken()
+
+				<input id="Id"
+					   name="Id"
+					   type="hidden" />
+
+				<div class="modal-body">
+
+					<div class="row">
+
+						<div class="col-12">
+
+							<label class="form-label">
+								Nombre
+							</label>
+
+							<input id="Nombre"
+								   name="Nombre"
+								   class="form-control" />
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="modal-footer">
+
+					<button type="button"
+							class="btn btn-danger"
+							data-bs-dismiss="modal">
+
+						Cancelar
+
+					</button>
+
+					<button id="btnGuardar"
+							type="submit"
+							class="btn btn-success">
+
+						Guardar
+
+					</button>
+
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>

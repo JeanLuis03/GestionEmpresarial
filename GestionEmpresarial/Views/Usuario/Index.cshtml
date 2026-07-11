@@ -1,0 +1,120 @@
+@using GestionEmpresarial.Extensions
+@using GestionEmpresarial.Helpers.Constants
+@using GestionEmpresarial.Interfaces
+@inject ICurrentUserService CurrentUser
+
+@{
+	ViewData["Title"] = "Usuarios";
+}
+
+<div class="container-fluid">
+
+	<div class="card shadow-sm border-0">
+
+		<div class="card-header bg-white">
+
+			<div class="d-flex justify-content-between align-items-center">
+
+				<div>
+
+					<h3 class="page-title">
+						Gestión de Usuarios
+					</h3>
+
+					<small class="page-subtitle mb-0">
+						Administración de usuarios registrados.
+					</small>
+
+				</div>
+
+				@if (User.TienePermiso(PermisosSistema.Agregar))
+				{
+
+					<button id="btnNuevoUsuario"
+							class="btn btn-primary shadow-sm">
+
+						<span class="material-symbols-outlined align-middle me-1">
+							add
+						</span>
+
+						Nuevo Usuario
+
+					</button>
+				}
+
+			</div>
+
+		</div>
+
+		<div class="card-body">
+
+			<table id="tablaUsuarios"
+				   class="table table-hover table-bordered align-middle w-100">
+
+				<thead>
+
+					<tr>
+
+						<th>Usuario</th>
+
+						<th>Correo</th>
+
+						<th>Rol</th>
+
+						<th>Estado</th>
+
+						<th>Última Fecha</th>
+						@if (User.TienePermiso(PermisosSistema.Editar) || User.TienePermiso(PermisosSistema.Eliminar))
+						{
+							<th style="width:180px">
+								Acciones
+							</th>
+
+						}
+
+					</tr>
+
+				</thead>
+
+				<tbody>
+				</tbody>
+
+			</table>
+
+		</div>
+
+	</div>
+
+</div>
+
+<partial name="_usuarioModal" />
+
+<script>
+
+	const puedeAgregar =
+		@(User.TienePermiso(PermisosSistema.Agregar)
+						? "true"
+						: "false");
+
+	const puedeEditar =
+		@(User.TienePermiso(PermisosSistema.Editar)
+						? "true"
+						: "false");
+
+	const puedeEliminar =
+		@(User.TienePermiso(PermisosSistema.Eliminar)
+						? "true"
+						: "false");
+
+	const usuarioActualId = "@CurrentUser.UsuarioId";
+
+	const esAdministrador =
+		@(CurrentUser.EsAdministrador ? "true" : "false");
+
+</script>
+
+@section Scripts {
+
+	<script src="~/js/modules/usuarios.js"></script>
+
+}

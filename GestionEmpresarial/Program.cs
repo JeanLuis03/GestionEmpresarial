@@ -1,9 +1,10 @@
 using GestionEmpresarial.DBContext;
+using GestionEmpresarial.Helpers.Constants;
 using GestionEmpresarial.Helpers.Seed;
 using GestionEmpresarial.Interfaces;
 using GestionEmpresarial.Services;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,13 @@ builder.Services
         options.ExpireTimeSpan = TimeSpan.FromHours(3);
     });
 
+// Configuración de AutoMapper
+builder.Services.AddAutoMapper(cfg =>
+{
+    
+},
+typeof(Program));
+
 
 // Agregar servicios al contenedor de dependencias
 builder.Services.AddControllersWithViews();
@@ -45,7 +53,49 @@ builder.Services.AddScoped<ISeeder, RolSeeder>();
 builder.Services.AddScoped<ISeeder, PermisoSeeder>();
 builder.Services.AddScoped<ISeeder, PermisoRolSeeder>();
 builder.Services.AddScoped<ISeeder, UsuarioSeeder>();
-builder.Services.AddAuthorization();
+builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+builder.Services.AddScoped<IProductoService, ProductoService>();
+builder.Services.AddScoped<IRolService, RolService>();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy(
+        PermisosSistema.Consultar,
+        policy =>
+        {
+            policy.RequireClaim(
+                ClaimTypesSistema.Permission,
+                PermisosSistema.Consultar);
+        });
+
+    options.AddPolicy(
+        PermisosSistema.Agregar,
+        policy =>
+        {
+            policy.RequireClaim(
+                ClaimTypesSistema.Permission,
+                PermisosSistema.Agregar);
+        });
+
+    options.AddPolicy(
+        PermisosSistema.Editar,
+        policy =>
+        {
+            policy.RequireClaim(
+                ClaimTypesSistema.Permission,
+                PermisosSistema.Editar);
+        });
+
+    options.AddPolicy(
+        PermisosSistema.Eliminar,
+        policy =>
+        {
+            policy.RequireClaim(
+                ClaimTypesSistema.Permission,
+                PermisosSistema.Eliminar);
+        });
+});
 
 
 

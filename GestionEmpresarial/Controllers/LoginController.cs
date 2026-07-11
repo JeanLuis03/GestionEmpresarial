@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using GestionEmpresarial.Helpers.Constants;
 using GestionEmpresarial.Interfaces;
 using GestionEmpresarial.ViewModels;
 using Microsoft.AspNetCore.Authentication;
@@ -63,7 +64,16 @@ namespace GestionEmpresarial.Controllers
                 new Claim(
                     ClaimTypes.Role,
                     usuario.Rol.Nombre)
+
             };
+
+            foreach (var permisoRol in usuario.Rol.PermisosRol)
+            {
+                claims.Add(
+                    new Claim(
+                        ClaimTypesSistema.Permission,
+                        permisoRol.Permiso.Nombre));
+            }
 
             var identity = new ClaimsIdentity(
                 claims,

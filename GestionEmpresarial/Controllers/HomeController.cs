@@ -1,3 +1,4 @@
+using AutoMapper;
 using GestionEmpresarial.Interfaces;
 using GestionEmpresarial.Models;
 using GestionEmpresarial.ViewModels;
@@ -12,11 +13,14 @@ namespace GestionEmpresarial.Controllers
     public class HomeController : Controller
     {
         private readonly ICurrentUserService _currentUserService;
+        private readonly IMapper _mapper;
 
-        public HomeController(ICurrentUserService currentUserService)
+        public HomeController(ICurrentUserService currentUserService, IMapper mapper)
         {
             _currentUserService = currentUserService;
+            _mapper = mapper;
         }
+
         public IActionResult Index()
         {
             var model = new DashboardViewModel

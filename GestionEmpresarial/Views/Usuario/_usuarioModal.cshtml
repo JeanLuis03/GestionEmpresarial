@@ -1,0 +1,120 @@
+<div class="modal fade"
+	 id="usuarioModal"
+	 tabindex="-1"
+	 aria-hidden="true"
+	 data-bs-backdrop="static"
+	 data-bs-keyboard="false">
+
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+
+		<div class="modal-content">
+
+			<div class="modal-header">
+
+				<h5 id="tituloModal"
+					class="modal-title">
+
+					Registro de Usuario
+
+				</h5>
+
+				<button type="button"
+						class="btn-close btn-close-white"
+						data-bs-dismiss="modal">
+				</button>
+
+			</div>
+
+			<form id="formUsuario" class="row g-2">
+
+				@Html.AntiForgeryToken()
+
+				<input id="Id"
+					   name="Id"
+					   type="hidden" />
+
+				<div class="modal-body">
+
+					<div class="row">
+
+						<div class="col-md-6 mb-3">
+
+							<label class="form-label">
+								Usuario
+							</label>
+
+							<input id="NombreUsuario"
+								   name="NombreUsuario"
+								   class="form-control" />
+
+						</div>
+
+						<div class="col-md-6 mb-3">
+
+							<label class="form-label">
+								Correo
+							</label>
+
+							<input id="Correo"
+								   name="Correo"
+								   class="form-control" />
+
+						</div>
+
+						<div class="col-md-6 mb-3">
+
+							<label class="form-label">
+								Contraseña
+							</label>
+
+							<input id="Contrasena"
+								   name="Contrasena"
+								   type="password"
+								   class="form-control" />
+
+						</div>
+
+						<div class="col-md-6 mb-3">
+
+							<label class="form-label">
+								Rol
+							</label>
+
+							<select id="IdRol"
+									name="IdRol"
+									class="form-select">
+							</select>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="modal-footer">
+
+					<button type="button"
+							class="btn btn-danger"
+							data-bs-dismiss="modal">
+
+						Cancelar
+
+					</button>
+
+					<button id="btnGuardar"
+							type="submit"
+							class="btn btn-success">
+
+						Guardar
+
+					</button>
+
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>

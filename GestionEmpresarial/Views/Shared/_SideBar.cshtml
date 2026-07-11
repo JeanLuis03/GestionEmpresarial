@@ -1,5 +1,7 @@
 ﻿
 @inject GestionEmpresarial.Interfaces.ICurrentUserService CurrentUser
+@using GestionEmpresarial.Extensions
+@using GestionEmpresarial.Helpers.Constants
 
 <div class="sidebar-header">
 
@@ -10,7 +12,7 @@
 <div class="sidebar-menu">
 
     <a asp-controller="Home"
-       asp-action="Index">
+       asp-action="Index" class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" ? "active" : "")">
 
         <span class="material-symbols-outlined">
             dashboard
@@ -20,83 +22,78 @@
 
     </a>
 
-    @if (CurrentUser.EsAdministrador)
+    @if (User.TienePermiso(PermisosSistema.Consultar))
     {
-        <a href="#">
+        <div class="sidebar-group">
 
-            <span class="material-symbols-outlined">
-                group
-            </span>
+            <div class="sidebar-group-title">
 
-            Usuarios
+                MANTENIMIENTOS
 
-        </a>
+            </div>
 
-        <a href="#">
+            <a asp-controller="Cliente"
+               asp-action="Index" class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Cliente" ? "active" : "")">
 
-            <span class="material-symbols-outlined">
-                security
-            </span>
+                <span class="material-symbols-outlined">
+                    groups
+                </span>
 
-            Roles
+                Clientes
 
-        </a>
+            </a>
 
-        <a href="#">
+            <a asp-controller="Categoria"
+               asp-action="Index" class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Categoria" ? "active" : "")">
 
-            <span class="material-symbols-outlined">
-                admin_panel_settings
-            </span>
+                <span class="material-symbols-outlined">
+                    category
+                </span>
 
-            Permisos
+                Categorías
 
-        </a>
-    }
+            </a>
 
-    @if (CurrentUser.EsSupervisor)
-    {
-        <a href="#">
+            <a asp-controller="Producto"
+               asp-action="Index" class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Producto" ? "active" : "")">
 
-            <span class="material-symbols-outlined">
-                manage_search
-            </span>
+                <span class="material-symbols-outlined">
+                    inventory_2
+                </span>
 
-            Consultas
+                Productos
 
-        </a>
+            </a>
 
-        <a href="#">
+            <a asp-controller="Usuario"
+               asp-action="Index" class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Usuario" ? "active" : "")">
 
-            <span class="material-symbols-outlined">
-                edit_square
-            </span>
+                <span class="material-symbols-outlined">
+                    manage_accounts
+                </span>
 
-            Modificaciones
+                Usuarios
 
-        </a>
-    }
+            </a>
 
-    @if (CurrentUser.EsEjecutor)
-    {
-        <a href="#">
+            <div class="sidebar-group-title mt-3">
 
-            <span class="material-symbols-outlined">
-                search
-            </span>
+                REPORTES
 
-            Consultas
+            </div>
 
-        </a>
+            <a asp-controller="Reporte"
+               asp-action="Productos" class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Reporte" ? "active" : "")">
 
-        <a href="#">
+                <span class="material-symbols-outlined">
+                    assessment
+                </span>
 
-            <span class="material-symbols-outlined">
-                add_circle
-            </span>
+                Productos
 
-            Agregar
+            </a>
 
-        </a>
+        </div>
     }
 
 </div>

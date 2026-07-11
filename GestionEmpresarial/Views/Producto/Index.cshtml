@@ -1,0 +1,117 @@
+@using GestionEmpresarial.Extensions
+@using GestionEmpresarial.Helpers.Constants
+
+@{
+	ViewData["Title"] = "Productos";
+}
+
+<div class="container-fluid">
+
+	<div class="card shadow-sm border-0">
+
+		<div class="card-header bg-white">
+
+			<div class="d-flex justify-content-between align-items-center">
+
+				<div>
+
+					<h3 class="page-title">
+						Gestión de Productos
+					</h3>
+
+					<small class="page-subtitle mb-0">
+						Administración de productos registrados.
+					</small>
+
+				</div>
+
+				@if (User.TienePermiso(PermisosSistema.Agregar))
+				{
+
+					<button id="btnNuevoProducto"
+							class="btn btn-primary shadow-sm">
+
+						<span class="material-symbols-outlined align-middle me-1">
+							add
+						</span>
+
+						Nuevo Producto
+
+					</button>
+				}
+
+			</div>
+
+		</div>
+
+		<div class="card-body">
+
+			<table id="tablaProductos"
+				   class="table table-hover table-bordered align-middle w-100">
+
+				<thead>
+
+					<tr>
+
+						<th>Código</th>
+
+						<th>Nombre</th>
+
+						<th>Marca</th>
+
+						<th>Modelo</th>
+
+						<th>Categoría</th>
+
+						<th>Precio</th>
+
+						<th>Stock</th>
+						@if (User.TienePermiso(PermisosSistema.Editar))
+						{
+							<th style="width:140px">
+								Acciones
+							</th>
+
+						}
+
+					</tr>
+
+				</thead>
+
+				<tbody>
+				</tbody>
+
+			</table>
+
+		</div>
+
+	</div>
+
+</div>
+
+<partial name="_productoModal" />
+
+<script>
+
+	const puedeAgregar =
+		@(User.TienePermiso(PermisosSistema.Agregar)
+						? "true"
+						: "false");
+
+	const puedeEditar =
+		@(User.TienePermiso(PermisosSistema.Editar)
+						? "true"
+						: "false");
+
+	const puedeEliminar =
+		@(User.TienePermiso(PermisosSistema.Eliminar)
+						? "true"
+						: "false");
+
+</script>
+
+@section Scripts {
+
+	<script src="~/js/modules/productos.js"></script>
+
+}
