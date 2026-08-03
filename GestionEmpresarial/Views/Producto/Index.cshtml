@@ -25,20 +25,36 @@
 
 				</div>
 
-				@if (User.TienePermiso(PermisosSistema.Agregar))
-				{
+				<div class="d-flex gap-2">
+					@if (User.TienePermiso(PermisosSistema.Consultar))
+					{
+						<button id="btnReporteProductos"
+								class="btn btn-outline-primary shadow-sm">
 
-					<button id="btnNuevoProducto"
-							class="btn btn-primary shadow-sm">
+							<span class="material-symbols-outlined align-middle me-1">
+								print
+							</span>
 
-						<span class="material-symbols-outlined align-middle me-1">
-							add
-						</span>
+							Abrir Reporte
 
-						Nuevo Producto
+						</button>
+					}
 
-					</button>
-				}
+					@if (User.TienePermiso(PermisosSistema.Agregar))
+					{
+
+						<button id="btnNuevoProducto"
+								class="btn btn-primary shadow-sm">
+
+							<span class="material-symbols-outlined align-middle me-1">
+								add
+							</span>
+
+							Nuevo Producto
+
+						</button>
+					}
+				</div>
 
 			</div>
 
