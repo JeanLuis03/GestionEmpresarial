@@ -1,355 +1,899 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition"
-		xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportServerUrl>http://laptop-jean/ReportServer</rd:ReportServerUrl>
+  <rd:ReportID>f084f19f-0d3f-4f9c-a0d5-2e0cc5a1a2aa</rd:ReportID>
+  <am:AuthoringMetadata>
+    <am:CreatedBy>
+      <am:Name>MSRB</am:Name>
+      <am:Version>15.1.30001.02</am:Version>
+    </am:CreatedBy>
+    <am:UpdatedBy>
+      <am:Name>MSRB</am:Name>
+      <am:Version>15.1.30001.02</am:Version>
+    </am:UpdatedBy>
+    <am:LastModifiedTimestamp>2026-08-03T23:33:43.4898460Z</am:LastModifiedTimestamp>
+  </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-	<DataSource Name="dbGestionEmpresarial">
-	  <DataSourceReference>dbGestionEmpresarial</DataSourceReference>
-	  <rd:DataSourceID>5b4a2f0d-7d8c-4f5d-9b8d-0f8a1d8b7d11</rd:DataSourceID>
-	</DataSource>
+    <DataSource Name="dbGestionEmpresarial">
+      <rd:SecurityType>None</rd:SecurityType>
+      <DataSourceReference>/dbGestionEmpresarial</DataSourceReference>
+      <rd:DataSourceID>5b4a2f0d-7d8c-4f5d-9b8d-0f8a1d8b7d11</rd:DataSourceID>
+    </DataSource>
   </DataSources>
   <DataSets>
-	<DataSet Name="dsProductos">
-	  <Query>
-		<DataSourceName>dbGestionEmpresarial</DataSourceName>
-		<CommandText>SELECT p.Codigo, p.Nombre, p.Marca, c.Nombre AS Categoria FROM Productos p INNER JOIN Categorias c ON c.Id = p.CategoriaId ORDER BY c.Nombre, p.Nombre</CommandText>
-	  </Query>
-	  <Fields>
-		<Field Name="Codigo">
-		  <DataField>Codigo</DataField>
-		  <rd:TypeName>System.String</rd:TypeName>
-		</Field>
-		<Field Name="Nombre">
-		  <DataField>Nombre</DataField>
-		  <rd:TypeName>System.String</rd:TypeName>
-		</Field>
-		<Field Name="Marca">
-		  <DataField>Marca</DataField>
-		  <rd:TypeName>System.String</rd:TypeName>
-		</Field>
-		<Field Name="Categoria">
-		  <DataField>Categoria</DataField>
-		  <rd:TypeName>System.String</rd:TypeName>
-		</Field>
-	  </Fields>
-	</DataSet>
+    <DataSet Name="dsProductos">
+      <Query>
+        <DataSourceName>dbGestionEmpresarial</DataSourceName>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>SELECT p.Codigo, p.Nombre, p.Marca, p.Modelo, c.Nombre AS Categoria, p.Precio, p.Stock FROM Productos p INNER JOIN Categorias c ON c.Id = p.CategoriaId 
+WHERE p.Activo = 1
+ORDER BY c.Nombre, p.Nombre</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Codigo">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Codigo</DataField>
+        </Field>
+        <Field Name="Nombre">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Nombre</DataField>
+        </Field>
+        <Field Name="Marca">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Marca</DataField>
+        </Field>
+        <Field Name="Modelo">
+          <rd:TypeName>System.String</rd:TypeName>
+          <rd:UserDefined>true</rd:UserDefined>
+          <DataField>Modelo</DataField>
+        </Field>
+        <Field Name="Categoria">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Categoria</DataField>
+        </Field>
+        <Field Name="Precio">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <rd:UserDefined>true</rd:UserDefined>
+          <DataField>Precio</DataField>
+        </Field>
+        <Field Name="Stock">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:UserDefined>true</rd:UserDefined>
+          <DataField>Stock</DataField>
+        </Field>
+      </Fields>
+      <WidthSensitivity>True</WidthSensitivity>
+    </DataSet>
   </DataSets>
-	<ReportSections>
-	<ReportSection>
-	  <Body>
-		<ReportItems>
-		  <Tablix Name="tablixProductos">
-			<TablixBody>
-			  <TablixColumns>
-				<TablixColumn>
-				  <Width>1.2in</Width>
-				</TablixColumn>
-				<TablixColumn>
-				  <Width>3.0in</Width>
-				</TablixColumn>
-				<TablixColumn>
-				  <Width>1.8in</Width>
-				</TablixColumn>
-				<TablixColumn>
-				  <Width>1.5in</Width>
-				</TablixColumn>
-			  </TablixColumns>
-			  <TablixRows>
-				<TablixRow>
-				  <Height>0.3in</Height>
-				  <TablixCells>
-					<TablixCell>
-					  <CellContents>
-						<Textbox Name="txtCodigoHeader">
-						  <CanGrow>true</CanGrow>
-						  <KeepTogether>true</KeepTogether>
-						  <Paragraphs>
-							<Paragraph>
-							  <TextRuns>
-								<TextRun>
-								  <Value>Código</Value>
-								  <Style>
-									<FontWeight>Bold</FontWeight>
-								  </Style>
-								</TextRun>
-							  </TextRuns>
-							  <Style />
-							</Paragraph>
-						  </Paragraphs>
-						  <rd:DefaultName>txtCodigoHeader</rd:DefaultName>
-						  <Style>
-							<Border>
-							  <Style>Solid</Style>
-							</Border>
-							<PaddingLeft>4pt</PaddingLeft>
-							<PaddingRight>4pt</PaddingRight>
-							<PaddingTop>4pt</PaddingTop>
-							<PaddingBottom>4pt</PaddingBottom>
-							<BackgroundColor>#E9ECEF</BackgroundColor>
-						  </Style>
-						</Textbox>
-					  </CellContents>
-					</TablixCell>
-					<TablixCell>
-					  <CellContents>
-						<Textbox Name="txtNombreHeader">
-						  <CanGrow>true</CanGrow>
-						  <KeepTogether>true</KeepTogether>
-						  <Paragraphs>
-							<Paragraph>
-							  <TextRuns>
-								<TextRun>
-								  <Value>Nombre</Value>
-								  <Style>
-									<FontWeight>Bold</FontWeight>
-								  </Style>
-								</TextRun>
-							  </TextRuns>
-							  <Style />
-							</Paragraph>
-						  </Paragraphs>
-						  <rd:DefaultName>txtNombreHeader</rd:DefaultName>
-						  <Style>
-							<Border>
-							  <Style>Solid</Style>
-							</Border>
-							<PaddingLeft>4pt</PaddingLeft>
-							<PaddingRight>4pt</PaddingRight>
-							<PaddingTop>4pt</PaddingTop>
-							<PaddingBottom>4pt</PaddingBottom>
-							<BackgroundColor>#E9ECEF</BackgroundColor>
-						  </Style>
-						</Textbox>
-					  </CellContents>
-					</TablixCell>
-					<TablixCell>
-					  <CellContents>
-						<Textbox Name="txtMarcaHeader">
-						  <CanGrow>true</CanGrow>
-						  <KeepTogether>true</KeepTogether>
-						  <Paragraphs>
-							<Paragraph>
-							  <TextRuns>
-								<TextRun>
-								  <Value>Marca</Value>
-								  <Style>
-									<FontWeight>Bold</FontWeight>
-								  </Style>
-								</TextRun>
-							  </TextRuns>
-							  <Style />
-							</Paragraph>
-						  </Paragraphs>
-						  <rd:DefaultName>txtMarcaHeader</rd:DefaultName>
-						  <Style>
-							<Border>
-							  <Style>Solid</Style>
-							</Border>
-							<PaddingLeft>4pt</PaddingLeft>
-							<PaddingRight>4pt</PaddingRight>
-							<PaddingTop>4pt</PaddingTop>
-							<PaddingBottom>4pt</PaddingBottom>
-							<BackgroundColor>#E9ECEF</BackgroundColor>
-						  </Style>
-						</Textbox>
-					  </CellContents>
-					</TablixCell>
-					<TablixCell>
-					  <CellContents>
-						<Textbox Name="txtCategoriaHeader">
-						  <CanGrow>true</CanGrow>
-						  <KeepTogether>true</KeepTogether>
-						  <Paragraphs>
-							<Paragraph>
-							  <TextRuns>
-								<TextRun>
-								  <Value>Categoría</Value>
-								  <Style>
-									<FontWeight>Bold</FontWeight>
-								  </Style>
-								</TextRun>
-							  </TextRuns>
-							  <Style />
-							</Paragraph>
-						  </Paragraphs>
-						  <rd:DefaultName>txtCategoriaHeader</rd:DefaultName>
-						  <Style>
-							<Border>
-							  <Style>Solid</Style>
-							</Border>
-							<PaddingLeft>4pt</PaddingLeft>
-							<PaddingRight>4pt</PaddingRight>
-							<PaddingTop>4pt</PaddingTop>
-							<PaddingBottom>4pt</PaddingBottom>
-							<BackgroundColor>#E9ECEF</BackgroundColor>
-						  </Style>
-						</Textbox>
-					  </CellContents>
-					</TablixCell>
-				  </TablixCells>
-				</TablixRow>
-				<TablixRow>
-				  <Height>0.28in</Height>
-				  <TablixCells>
-					<TablixCell>
-					  <CellContents>
-						<Textbox Name="txtCodigoDetalle">
-						  <CanGrow>true</CanGrow>
-						  <KeepTogether>true</KeepTogether>
-						  <Paragraphs>
-							<Paragraph>
-							  <TextRuns>
-								<TextRun>
-								  <Value>=Fields!Codigo.Value</Value>
-								</TextRun>
-							  </TextRuns>
-							  <Style />
-							</Paragraph>
-						  </Paragraphs>
-						  <rd:DefaultName>txtCodigoDetalle</rd:DefaultName>
-						  <Style>
-							<Border>
-							  <Style>Solid</Style>
-							</Border>
-							<PaddingLeft>4pt</PaddingLeft>
-							<PaddingRight>4pt</PaddingRight>
-							<PaddingTop>4pt</PaddingTop>
-							<PaddingBottom>4pt</PaddingBottom>
-						  </Style>
-						</Textbox>
-					  </CellContents>
-					</TablixCell>
-					<TablixCell>
-					  <CellContents>
-						<Textbox Name="txtNombreDetalle">
-						  <CanGrow>true</CanGrow>
-						  <KeepTogether>true</KeepTogether>
-						  <Paragraphs>
-							<Paragraph>
-							  <TextRuns>
-								<TextRun>
-								  <Value>=Fields!Nombre.Value</Value>
-								</TextRun>
-							  </TextRuns>
-							  <Style />
-							</Paragraph>
-						  </Paragraphs>
-						  <rd:DefaultName>txtNombreDetalle</rd:DefaultName>
-						  <Style>
-							<Border>
-							  <Style>Solid</Style>
-							</Border>
-							<PaddingLeft>4pt</PaddingLeft>
-							<PaddingRight>4pt</PaddingRight>
-							<PaddingTop>4pt</PaddingTop>
-							<PaddingBottom>4pt</PaddingBottom>
-						  </Style>
-						</Textbox>
-					  </CellContents>
-					</TablixCell>
-					<TablixCell>
-					  <CellContents>
-						<Textbox Name="txtMarcaDetalle">
-						  <CanGrow>true</CanGrow>
-						  <KeepTogether>true</KeepTogether>
-						  <Paragraphs>
-							<Paragraph>
-							  <TextRuns>
-								<TextRun>
-								  <Value>=Fields!Marca.Value</Value>
-								</TextRun>
-							  </TextRuns>
-							  <Style />
-							</Paragraph>
-						  </Paragraphs>
-						  <rd:DefaultName>txtMarcaDetalle</rd:DefaultName>
-						  <Style>
-							<Border>
-							  <Style>Solid</Style>
-							</Border>
-							<PaddingLeft>4pt</PaddingLeft>
-							<PaddingRight>4pt</PaddingRight>
-							<PaddingTop>4pt</PaddingTop>
-							<PaddingBottom>4pt</PaddingBottom>
-						  </Style>
-						</Textbox>
-					  </CellContents>
-					</TablixCell>
-					<TablixCell>
-					  <CellContents>
-						<Textbox Name="txtCategoriaDetalle">
-						  <CanGrow>true</CanGrow>
-						  <KeepTogether>true</KeepTogether>
-						  <Paragraphs>
-							<Paragraph>
-							  <TextRuns>
-								<TextRun>
-								  <Value>=Fields!Categoria.Value</Value>
-								</TextRun>
-							  </TextRuns>
-							  <Style />
-							</Paragraph>
-						  </Paragraphs>
-						  <rd:DefaultName>txtCategoriaDetalle</rd:DefaultName>
-						  <Style>
-							<Border>
-							  <Style>Solid</Style>
-							</Border>
-							<PaddingLeft>4pt</PaddingLeft>
-							<PaddingRight>4pt</PaddingRight>
-							<PaddingTop>4pt</PaddingTop>
-							<PaddingBottom>4pt</PaddingBottom>
-						  </Style>
-						</Textbox>
-					  </CellContents>
-					</TablixCell>
-				  </TablixCells>
-				</TablixRow>
-			  </TablixRows>
-			</TablixBody>
-			<TablixColumnHierarchy>
-			  <TablixMembers>
-				<TablixMember />
-				<TablixMember />
-				<TablixMember />
-				<TablixMember />
-			  </TablixMembers>
-			</TablixColumnHierarchy>
-			<TablixRowHierarchy>
-			  <TablixMembers>
-				<TablixMember>
-				  <KeepWithGroup>After</KeepWithGroup>
-				  <RepeatOnNewPage>true</RepeatOnNewPage>
-				</TablixMember>
-				<TablixMember>
-				  <Group Name="DetailGroup" />
-				</TablixMember>
-			  </TablixMembers>
-			</TablixRowHierarchy>
-			<DataSetName>dsProductos</DataSetName>
-			<Height>0.58in</Height>
-			<Width>7.5in</Width>
-			<Style>
-			  <Border>
-				<Style>None</Style>
-			  </Border>
-			</Style>
-		  </Tablix>
-		</ReportItems>
-		<Height>0.58in</Height>
-		<Style />
-	  </Body>
-	  <Width>7.5in</Width>
-	  <Page>
-		<PageHeight>11in</PageHeight>
-		<PageWidth>8.5in</PageWidth>
-		<LeftMargin>0.5in</LeftMargin>
-		<RightMargin>0.5in</RightMargin>
-		<TopMargin>0.5in</TopMargin>
-		<BottomMargin>0.5in</BottomMargin>
-		<Style />
-	  </Page>
-	</ReportSection>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="txtTituloCorePlus">
+            <rd:DefaultName>txtTituloCorePlus</rd:DefaultName>
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>CorePlus ERP</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>16pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>#1E3A8A</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Style>
+              <PaddingLeft>0pt</PaddingLeft>
+              <PaddingRight>0pt</PaddingRight>
+              <PaddingTop>0pt</PaddingTop>
+              <PaddingBottom>0pt</PaddingBottom>
+            </Style>
+            <Top>0.00in</Top>
+            <Left>0.00in</Left>
+            <Height>0.25in</Height>
+            <Width>7.40in</Width>
+          </Textbox>
+          <Textbox Name="txtSubtituloReporte">
+            <rd:DefaultName>txtSubtituloReporte</rd:DefaultName>
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Reporte General de Productos</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>#111827</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Style>
+              <PaddingLeft>0pt</PaddingLeft>
+              <PaddingRight>0pt</PaddingRight>
+              <PaddingTop>0pt</PaddingTop>
+              <PaddingBottom>0pt</PaddingBottom>
+            </Style>
+            <Top>0.26in</Top>
+            <Left>0.00in</Left>
+            <Height>0.20in</Height>
+            <Width>7.40in</Width>
+          </Textbox>
+          <Textbox Name="txtGeneradoReporte">
+            <rd:DefaultName>txtGeneradoReporte</rd:DefaultName>
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Generado: " &amp; Format(Globals!ExecutionTime, "dd/MM/yyyy HH:mm")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <Color>#374151</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Style>
+              <PaddingLeft>0pt</PaddingLeft>
+              <PaddingRight>0pt</PaddingRight>
+              <PaddingTop>0pt</PaddingTop>
+              <PaddingBottom>0pt</PaddingBottom>
+            </Style>
+            <Top>0.46in</Top>
+            <Left>0.00in</Left>
+            <Height>0.18in</Height>
+            <Width>7.40in</Width>
+          </Textbox>
+          <Textbox Name="txtLineaTitulo">
+            <rd:DefaultName>txtLineaTitulo</rd:DefaultName>
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value> </Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Style>
+              <Border>
+                <Color>#2563EB</Color>
+                <Style>Solid</Style>
+              </Border>
+              <PaddingLeft>0pt</PaddingLeft>
+              <PaddingRight>0pt</PaddingRight>
+              <PaddingTop>0pt</PaddingTop>
+              <PaddingBottom>0pt</PaddingBottom>
+            </Style>
+            <Top>0.68in</Top>
+            <Left>0.00in</Left>
+            <Height>0.03in</Height>
+            <Width>7.40in</Width>
+          </Textbox>
+          <Tablix Name="tablixProductos">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>0.65in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.60in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.00in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.90in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.25in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.10in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.80in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.32in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtCodigoHeader">
+                          <rd:DefaultName>txtCodigoHeader</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Código</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>10pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#FFFFFF</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#D1D5DB</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#1E3A8A</BackgroundColor>
+                            <PaddingLeft>3pt</PaddingLeft>
+                            <PaddingRight>3pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtNombreHeader">
+                          <rd:DefaultName>txtNombreHeader</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Nombre</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>10pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#FFFFFF</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#D1D5DB</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#1E3A8A</BackgroundColor>
+                            <PaddingLeft>3pt</PaddingLeft>
+                            <PaddingRight>3pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtMarcaHeader">
+                          <rd:DefaultName>txtMarcaHeader</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Marca</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>10pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#FFFFFF</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#D1D5DB</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#1E3A8A</BackgroundColor>
+                            <PaddingLeft>3pt</PaddingLeft>
+                            <PaddingRight>3pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtModeloHeader">
+                          <rd:DefaultName>txtModeloHeader</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Modelo</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>10pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#FFFFFF</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#D1D5DB</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#1E3A8A</BackgroundColor>
+                            <PaddingLeft>3pt</PaddingLeft>
+                            <PaddingRight>3pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtCategoriaHeader">
+                          <rd:DefaultName>txtCategoriaHeader</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Categoría</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>10pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#FFFFFF</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#D1D5DB</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#1E3A8A</BackgroundColor>
+                            <PaddingLeft>3pt</PaddingLeft>
+                            <PaddingRight>3pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtPrecioHeader">
+                          <rd:DefaultName>txtPrecioHeader</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Precio Unitario</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>10pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#FFFFFF</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#D1D5DB</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#1E3A8A</BackgroundColor>
+                            <PaddingLeft>3pt</PaddingLeft>
+                            <PaddingRight>3pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtStockHeader">
+                          <rd:DefaultName>txtStockHeader</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Stock</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>10pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#FFFFFF</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#D1D5DB</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#1E3A8A</BackgroundColor>
+                            <PaddingLeft>3pt</PaddingLeft>
+                            <PaddingRight>3pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.27in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtCodigoDetalle">
+                          <rd:DefaultName>txtCodigoDetalle</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Codigo.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>#111827</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#D1D5DB</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>=IIF(RowNumber(Nothing) MOD 2 = 0,"#FFFFFF","#F8FAFC")</BackgroundColor>
+                            <PaddingLeft>3pt</PaddingLeft>
+                            <PaddingRight>3pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtNombreDetalle">
+                          <rd:DefaultName>txtNombreDetalle</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Nombre.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>#111827</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#D1D5DB</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>=IIF(RowNumber(Nothing) MOD 2 = 0,"#FFFFFF","#F8FAFC")</BackgroundColor>
+                            <PaddingLeft>3pt</PaddingLeft>
+                            <PaddingRight>3pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtMarcaDetalle">
+                          <rd:DefaultName>txtMarcaDetalle</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Marca.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>#111827</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#D1D5DB</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>=IIF(RowNumber(Nothing) MOD 2 = 0,"#FFFFFF","#F8FAFC")</BackgroundColor>
+                            <PaddingLeft>3pt</PaddingLeft>
+                            <PaddingRight>3pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtModeloDetalle">
+                          <rd:DefaultName>txtModeloDetalle</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Modelo.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>#111827</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#D1D5DB</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>=IIF(RowNumber(Nothing) MOD 2 = 0,"#FFFFFF","#F8FAFC")</BackgroundColor>
+                            <PaddingLeft>3pt</PaddingLeft>
+                            <PaddingRight>3pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtCategoriaDetalle">
+                          <rd:DefaultName>txtCategoriaDetalle</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Categoria.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>#111827</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#D1D5DB</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>=IIF(RowNumber(Nothing) MOD 2 = 0,"#FFFFFF","#F8FAFC")</BackgroundColor>
+                            <PaddingLeft>3pt</PaddingLeft>
+                            <PaddingRight>3pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtPrecioDetalle">
+                          <rd:DefaultName>txtPrecioDetalle</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>="RD$ " &amp; Format(Fields!Precio.Value, "#,##0.00")</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>#111827</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#D1D5DB</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>=IIF(RowNumber(Nothing) MOD 2 = 0,"#FFFFFF","#F8FAFC")</BackgroundColor>
+                            <PaddingLeft>3pt</PaddingLeft>
+                            <PaddingRight>3pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="txtStockDetalle">
+                          <rd:DefaultName>txtStockDetalle</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Stock.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>=IIF(Fields!Stock.Value &lt;= 5, "#DC2626", "#111827")</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>#D1D5DB</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>=IIF(RowNumber(Nothing) MOD 2 = 0,"#FFFFFF","#F8FAFC")</BackgroundColor>
+                            <PaddingLeft>3pt</PaddingLeft>
+                            <PaddingRight>3pt</PaddingRight>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="DetailGroup" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>dsProductos</DataSetName>
+            <Top>0.95in</Top>
+            <Left>0.05in</Left>
+            <Height>0.59in</Height>
+            <Width>7.30in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+            <cl:ComponentMetadata>
+              <cl:ComponentId>2e0eb9b4-bb00-4707-8e9a-89a4518dc25d</cl:ComponentId>
+              <cl:SourcePath>/Report Parts/tablixProductos</cl:SourcePath>
+              <cl:SyncDate>2026-07-10T14:03:48.0789521-04:00</cl:SyncDate>
+            </cl:ComponentMetadata>
+          </Tablix>
+        </ReportItems>
+        <Height>4.20in</Height>
+        <Style />
+      </Body>
+      <Width>7.40in</Width>
+      <Page>
+        <PageWidth>8.5in</PageWidth>
+        <PageHeight>11in</PageHeight>
+        <LeftMargin>0.5in</LeftMargin>
+        <RightMargin>0.5in</RightMargin>
+        <TopMargin>0.5in</TopMargin>
+        <BottomMargin>0.5in</BottomMargin>
+        <PageFooter>
+          <Height>0.35in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="txtPiePaginaIzquierdo">
+              <rd:DefaultName>txtPiePaginaIzquierdo</rd:DefaultName>
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="Página " &amp; Globals!PageNumber &amp; " de " &amp; Globals!TotalPages</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <Color>#4B5563</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Style>
+                <PaddingLeft>0pt</PaddingLeft>
+                <PaddingRight>0pt</PaddingRight>
+                <PaddingTop>0pt</PaddingTop>
+                <PaddingBottom>0pt</PaddingBottom>
+              </Style>
+              <Top>0.05in</Top>
+              <Left>0.00in</Left>
+              <Height>0.18in</Height>
+              <Width>3.60in</Width>
+            </Textbox>
+            <Textbox Name="txtPiePaginaDerecho">
+              <rd:DefaultName>txtPiePaginaDerecho</rd:DefaultName>
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="Fecha de impresión: " &amp; Format(Globals!ExecutionTime, "dd/MM/yyyy HH:mm")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <Color>#4B5563</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Style>
+                <PaddingLeft>0pt</PaddingLeft>
+                <PaddingRight>0pt</PaddingRight>
+                <PaddingTop>0pt</PaddingTop>
+                <PaddingBottom>0pt</PaddingBottom>
+              </Style>
+              <Top>0.05in</Top>
+              <Left>3.80in</Left>
+              <Height>0.18in</Height>
+              <Width>3.60in</Width>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <Style />
+      </Page>
+    </ReportSection>
   </ReportSections>
-  <rd:ReportID>f084f19f-0d3f-4f9c-a0d5-2e0cc5a1a2aa</rd:ReportID>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
 </Report>
