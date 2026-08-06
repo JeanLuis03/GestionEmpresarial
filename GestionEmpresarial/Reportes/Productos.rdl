@@ -12,7 +12,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.1.30001.02</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-08-03T23:33:43.4898460Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-08-06T18:05:59.9382527Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -82,9 +82,9 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                     <Value>CorePlus ERP</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>16pt</FontSize>
+                      <FontSize>20pt</FontSize>
                       <FontWeight>Bold</FontWeight>
-                      <Color>#1E3A8A</Color>
+                      <Color>#2563eb</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -93,16 +93,9 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Style>
-              <PaddingLeft>0pt</PaddingLeft>
-              <PaddingRight>0pt</PaddingRight>
-              <PaddingTop>0pt</PaddingTop>
-              <PaddingBottom>0pt</PaddingBottom>
-            </Style>
-            <Top>0.00in</Top>
-            <Left>0.00in</Left>
             <Height>0.25in</Height>
-            <Width>7.40in</Width>
+            <Width>7.4in</Width>
+            <Style />
           </Textbox>
           <Textbox Name="txtSubtituloReporte">
             <rd:DefaultName>txtSubtituloReporte</rd:DefaultName>
@@ -112,43 +105,11 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Reporte General de Productos</Value>
+                    <Value>Reporte de Productos por Categoría</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>11pt</FontSize>
+                      <FontSize>13pt</FontSize>
                       <FontWeight>Bold</FontWeight>
-                      <Color>#111827</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Style>
-              <PaddingLeft>0pt</PaddingLeft>
-              <PaddingRight>0pt</PaddingRight>
-              <PaddingTop>0pt</PaddingTop>
-              <PaddingBottom>0pt</PaddingBottom>
-            </Style>
-            <Top>0.26in</Top>
-            <Left>0.00in</Left>
-            <Height>0.20in</Height>
-            <Width>7.40in</Width>
-          </Textbox>
-          <Textbox Name="txtGeneradoReporte">
-            <rd:DefaultName>txtGeneradoReporte</rd:DefaultName>
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>="Generado: " &amp; Format(Globals!ExecutionTime, "dd/MM/yyyy HH:mm")</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>9pt</FontSize>
                       <Color>#374151</Color>
                     </Style>
                   </TextRun>
@@ -158,46 +119,11 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Style>
-              <PaddingLeft>0pt</PaddingLeft>
-              <PaddingRight>0pt</PaddingRight>
-              <PaddingTop>0pt</PaddingTop>
-              <PaddingBottom>0pt</PaddingBottom>
-            </Style>
-            <Top>0.46in</Top>
-            <Left>0.00in</Left>
-            <Height>0.18in</Height>
-            <Width>7.40in</Width>
-          </Textbox>
-          <Textbox Name="txtLineaTitulo">
-            <rd:DefaultName>txtLineaTitulo</rd:DefaultName>
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value> </Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <Style>
-              <Border>
-                <Color>#2563EB</Color>
-                <Style>Solid</Style>
-              </Border>
-              <PaddingLeft>0pt</PaddingLeft>
-              <PaddingRight>0pt</PaddingRight>
-              <PaddingTop>0pt</PaddingTop>
-              <PaddingBottom>0pt</PaddingBottom>
-            </Style>
-            <Top>0.68in</Top>
-            <Left>0.00in</Left>
-            <Height>0.03in</Height>
-            <Width>7.40in</Width>
+            <Top>0.31944in</Top>
+            <Height>0.2in</Height>
+            <Width>7.4in</Width>
+            <ZIndex>1</ZIndex>
+            <Style />
           </Textbox>
           <Tablix Name="tablixProductos">
             <TablixBody>
@@ -206,22 +132,22 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                   <Width>0.65in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.60in</Width>
+                  <Width>1.6in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.00in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.90in</Width>
+                  <Width>0.9in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.25in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.10in</Width>
+                  <Width>1.1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.80in</Width>
+                  <Width>0.8in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -241,9 +167,8 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                                   <Value>Código</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>10pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#FFFFFF</Color>
+                                    <Color>#ffffff</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -254,10 +179,10 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#D1D5DB</Color>
+                              <Color>#d1d5db</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#1E3A8A</BackgroundColor>
+                            <BackgroundColor>#1e3a8a</BackgroundColor>
                             <PaddingLeft>3pt</PaddingLeft>
                             <PaddingRight>3pt</PaddingRight>
                             <PaddingTop>3pt</PaddingTop>
@@ -279,9 +204,8 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                                   <Value>Nombre</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>10pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#FFFFFF</Color>
+                                    <Color>#ffffff</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -292,10 +216,10 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#D1D5DB</Color>
+                              <Color>#d1d5db</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#1E3A8A</BackgroundColor>
+                            <BackgroundColor>#1e3a8a</BackgroundColor>
                             <PaddingLeft>3pt</PaddingLeft>
                             <PaddingRight>3pt</PaddingRight>
                             <PaddingTop>3pt</PaddingTop>
@@ -317,9 +241,8 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                                   <Value>Marca</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>10pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#FFFFFF</Color>
+                                    <Color>#ffffff</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -330,10 +253,10 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#D1D5DB</Color>
+                              <Color>#d1d5db</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#1E3A8A</BackgroundColor>
+                            <BackgroundColor>#1e3a8a</BackgroundColor>
                             <PaddingLeft>3pt</PaddingLeft>
                             <PaddingRight>3pt</PaddingRight>
                             <PaddingTop>3pt</PaddingTop>
@@ -355,9 +278,8 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                                   <Value>Modelo</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>10pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#FFFFFF</Color>
+                                    <Color>#ffffff</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -368,10 +290,10 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#D1D5DB</Color>
+                              <Color>#d1d5db</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#1E3A8A</BackgroundColor>
+                            <BackgroundColor>#1e3a8a</BackgroundColor>
                             <PaddingLeft>3pt</PaddingLeft>
                             <PaddingRight>3pt</PaddingRight>
                             <PaddingTop>3pt</PaddingTop>
@@ -393,9 +315,8 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                                   <Value>Categoría</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>10pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#FFFFFF</Color>
+                                    <Color>#ffffff</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -406,10 +327,10 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#D1D5DB</Color>
+                              <Color>#d1d5db</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#1E3A8A</BackgroundColor>
+                            <BackgroundColor>#1e3a8a</BackgroundColor>
                             <PaddingLeft>3pt</PaddingLeft>
                             <PaddingRight>3pt</PaddingRight>
                             <PaddingTop>3pt</PaddingTop>
@@ -431,9 +352,8 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                                   <Value>Precio Unitario</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>10pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#FFFFFF</Color>
+                                    <Color>#ffffff</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -444,10 +364,10 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#D1D5DB</Color>
+                              <Color>#d1d5db</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#1E3A8A</BackgroundColor>
+                            <BackgroundColor>#1e3a8a</BackgroundColor>
                             <PaddingLeft>3pt</PaddingLeft>
                             <PaddingRight>3pt</PaddingRight>
                             <PaddingTop>3pt</PaddingTop>
@@ -469,9 +389,8 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                                   <Value>Stock</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>10pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Color>#FFFFFF</Color>
+                                    <Color>#ffffff</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -482,10 +401,10 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#D1D5DB</Color>
+                              <Color>#d1d5db</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#1E3A8A</BackgroundColor>
+                            <BackgroundColor>#1e3a8a</BackgroundColor>
                             <PaddingLeft>3pt</PaddingLeft>
                             <PaddingRight>3pt</PaddingRight>
                             <PaddingTop>3pt</PaddingTop>
@@ -524,7 +443,7 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#D1D5DB</Color>
+                              <Color>#d1d5db</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>=IIF(RowNumber(Nothing) MOD 2 = 0,"#FFFFFF","#F8FAFC")</BackgroundColor>
@@ -561,7 +480,7 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#D1D5DB</Color>
+                              <Color>#d1d5db</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>=IIF(RowNumber(Nothing) MOD 2 = 0,"#FFFFFF","#F8FAFC")</BackgroundColor>
@@ -598,7 +517,7 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#D1D5DB</Color>
+                              <Color>#d1d5db</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>=IIF(RowNumber(Nothing) MOD 2 = 0,"#FFFFFF","#F8FAFC")</BackgroundColor>
@@ -635,7 +554,7 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#D1D5DB</Color>
+                              <Color>#d1d5db</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>=IIF(RowNumber(Nothing) MOD 2 = 0,"#FFFFFF","#F8FAFC")</BackgroundColor>
@@ -672,7 +591,7 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#D1D5DB</Color>
+                              <Color>#d1d5db</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>=IIF(RowNumber(Nothing) MOD 2 = 0,"#FFFFFF","#F8FAFC")</BackgroundColor>
@@ -709,7 +628,7 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#D1D5DB</Color>
+                              <Color>#d1d5db</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>=IIF(RowNumber(Nothing) MOD 2 = 0,"#FFFFFF","#F8FAFC")</BackgroundColor>
@@ -746,7 +665,7 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                           </Paragraphs>
                           <Style>
                             <Border>
-                              <Color>#D1D5DB</Color>
+                              <Color>#d1d5db</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>=IIF(RowNumber(Nothing) MOD 2 = 0,"#FFFFFF","#F8FAFC")</BackgroundColor>
@@ -785,10 +704,11 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>dsProductos</DataSetName>
-            <Top>0.95in</Top>
+            <Top>0.77237in</Top>
             <Left>0.05in</Left>
             <Height>0.59in</Height>
-            <Width>7.30in</Width>
+            <Width>7.3in</Width>
+            <ZIndex>2</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -800,20 +720,235 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
               <cl:SyncDate>2026-07-10T14:03:48.0789521-04:00</cl:SyncDate>
             </cl:ComponentMetadata>
           </Tablix>
+          <Rectangle Name="rectResumen">
+            <ReportItems>
+              <Textbox Name="txtResumenTitulo">
+                <rd:DefaultName>txtResumenTitulo</rd:DefaultName>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Resumen</Value>
+                        <Style>
+                          <FontFamily>Segoe UI</FontFamily>
+                          <FontSize>11pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>#2563eb</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Height>0.2in</Height>
+                <Width>7.3in</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+              </Textbox>
+              <Textbox Name="txtResumenTotalProductosLabel">
+                <rd:DefaultName>txtResumenTotalProductosLabel</rd:DefaultName>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Total de Productos:</Value>
+                        <Style>
+                          <FontFamily>Segoe UI</FontFamily>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>#374151</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.28in</Top>
+                <Height>0.18in</Height>
+                <Width>1.20088in</Width>
+                <ZIndex>1</ZIndex>
+                <Style />
+              </Textbox>
+              <Textbox Name="txtResumenTotalProductosValor">
+                <rd:DefaultName>txtResumenTotalProductosValor</rd:DefaultName>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=CountRows("dsProductos")</Value>
+                        <Style>
+                          <FontFamily>Segoe UI</FontFamily>
+                          <FontSize>9pt</FontSize>
+                          <Color>#374151</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.28in</Top>
+                <Left>1.22866in</Left>
+                <Height>0.18in</Height>
+                <Width>1in</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <VerticalAlign>Top</VerticalAlign>
+                </Style>
+              </Textbox>
+              <Textbox Name="txtResumenValorInventarioLabel">
+                <rd:DefaultName>txtResumenValorInventarioLabel</rd:DefaultName>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Valor Total del Inventario:</Value>
+                        <Style>
+                          <FontFamily>Segoe UI</FontFamily>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>#374151</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.54778in</Top>
+                <Height>0.18in</Height>
+                <Width>1.63246in</Width>
+                <ZIndex>3</ZIndex>
+                <Style />
+              </Textbox>
+              <Textbox Name="txtResumenValorInventarioValor">
+                <rd:DefaultName>txtResumenValorInventarioValor</rd:DefaultName>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>="RD$ " &amp; Format(Sum(CDec(Fields!Precio.Value) * CDec(Fields!Stock.Value), "dsProductos"), "#,##0.00")</Value>
+                        <Style>
+                          <FontFamily>Segoe UI</FontFamily>
+                          <FontSize>9pt</FontSize>
+                          <Color>#374151</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.54778in</Top>
+                <Left>1.64635in</Left>
+                <Height>0.18in</Height>
+                <Width>1.11082in</Width>
+                <ZIndex>4</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <VerticalAlign>Top</VerticalAlign>
+                </Style>
+              </Textbox>
+              <Textbox Name="txtResumenValorInventarioLabel2">
+                <rd:DefaultName>txtResumenValorInventarioLabel</rd:DefaultName>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Generado Por:</Value>
+                        <Style>
+                          <FontFamily>Segoe UI</FontFamily>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>#374151</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.79722in</Top>
+                <Height>0.18in</Height>
+                <Width>0.91246in</Width>
+                <ZIndex>5</ZIndex>
+                <Style />
+              </Textbox>
+              <Textbox Name="txtResumenValorInventarioValor2">
+                <rd:DefaultName>txtResumenValorInventarioValor</rd:DefaultName>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>= User!UserID</Value>
+                        <Style>
+                          <FontFamily>Segoe UI</FontFamily>
+                          <FontSize>9pt</FontSize>
+                          <Color>#374151</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.79722in</Top>
+                <Left>0.9819in</Left>
+                <Height>0.18in</Height>
+                <Width>1.11082in</Width>
+                <ZIndex>6</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <VerticalAlign>Top</VerticalAlign>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <Top>1.78in</Top>
+            <Height>1.11141in</Height>
+            <Width>7.4in</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BackgroundColor>#ffffff</BackgroundColor>
+            </Style>
+          </Rectangle>
         </ReportItems>
-        <Height>4.20in</Height>
+        <Height>3.5203in</Height>
         <Style />
       </Body>
-      <Width>7.40in</Width>
+      <Width>7.4in</Width>
       <Page>
-        <PageWidth>8.5in</PageWidth>
-        <PageHeight>11in</PageHeight>
-        <LeftMargin>0.5in</LeftMargin>
-        <RightMargin>0.5in</RightMargin>
-        <TopMargin>0.5in</TopMargin>
-        <BottomMargin>0.5in</BottomMargin>
         <PageFooter>
-          <Height>0.35in</Height>
+          <Height>0.74868in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -829,23 +964,17 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
-                        <Color>#4B5563</Color>
+                        <Color>#4b5563</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Style>
-                <PaddingLeft>0pt</PaddingLeft>
-                <PaddingRight>0pt</PaddingRight>
-                <PaddingTop>0pt</PaddingTop>
-                <PaddingBottom>0pt</PaddingBottom>
-              </Style>
               <Top>0.05in</Top>
-              <Left>0.00in</Left>
               <Height>0.18in</Height>
-              <Width>3.60in</Width>
+              <Width>3.6in</Width>
+              <Style />
             </Textbox>
             <Textbox Name="txtPiePaginaDerecho">
               <rd:DefaultName>txtPiePaginaDerecho</rd:DefaultName>
@@ -855,11 +984,11 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="Fecha de impresión: " &amp; Format(Globals!ExecutionTime, "dd/MM/yyyy HH:mm")</Value>
+                      <Value>="Fecha de impresión: " &amp; Format(Now(), "dd/MM/yyyy hh:mm tt")</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
-                        <Color>#4B5563</Color>
+                        <Color>#4b5563</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -868,16 +997,16 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Style>
-                <PaddingLeft>0pt</PaddingLeft>
-                <PaddingRight>0pt</PaddingRight>
-                <PaddingTop>0pt</PaddingTop>
-                <PaddingBottom>0pt</PaddingBottom>
-              </Style>
               <Top>0.05in</Top>
-              <Left>3.80in</Left>
+              <Left>3.8in</Left>
               <Height>0.18in</Height>
-              <Width>3.60in</Width>
+              <Width>3.6in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
             </Textbox>
           </ReportItems>
           <Style>
@@ -886,6 +1015,10 @@ ORDER BY c.Nombre, p.Nombre</CommandText>
             </Border>
           </Style>
         </PageFooter>
+        <LeftMargin>0.5in</LeftMargin>
+        <RightMargin>0.5in</RightMargin>
+        <TopMargin>0.5in</TopMargin>
+        <BottomMargin>0.5in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
