@@ -8,6 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const labels = Array.isArray(data.categorias) ? data.categorias : [];
     const values = Array.isArray(data.cantidades) ? data.cantidades : [];
+
+    const obtenerTema = () => document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+
+    const obtenerColoresTema = () => obtenerTema() === 'dark'
+        ? {
+            texto: '#F8F9FA',
+            grid: 'rgba(255, 255, 255, 0.12)'
+        }
+        : {
+            texto: '#495057',
+            grid: 'rgba(0, 0, 0, 0.08)'
+        };
+
     const backgroundColors = labels.map((_, index) => {
         const palette = [
             'rgba(13, 110, 253, 0.85)',
@@ -21,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return palette[index % palette.length];
     });
 
-    new Chart(canvas, {
+    const chart = new Chart(canvas, {
         type: 'bar',
         data: {
             labels,
@@ -48,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: {
                     display: true,
                     text: 'Productos por Categoría',
+                    color: obtenerColoresTema().texto,
                     font: {
                         size: 16,
                         weight: '600'
@@ -60,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             scales: {
                 x: {
                     ticks: {
-                        color: '#495057',
+                        color: obtenerColoresTema().texto,
                         font: {
                             size: 12
                         }
@@ -73,16 +87,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     beginAtZero: true,
                     ticks: {
                         precision: 0,
-                        color: '#495057',
+                        color: obtenerColoresTema().texto,
                         font: {
                             size: 12
                         }
                     },
                     grid: {
-                        color: 'rgba(0, 0, 0, 0.08)'
+                        color: obtenerColoresTema().grid
                     }
                 }
             }
         }
+    });
+
+    const actualizarGrafico = () => {
+        const colores = obtenerColoresTema();
+
+        chart.options.plugins.title.color = colores.texto;
+        chart.options.scales.x.ticks.color = colores.texto;
+        chart.options.scales.y.ticks.color = colores.texto;
+        chart.options.scales.y.grid.color = colores.grid;
+        chart.update();
+    };
+
+    document.addEventListener('themechange', actualizarGrafico);
+
+    const observerTema = new MutationObserver(() => {
+        actualizarGrafico();
+    });
+
+    observerTema.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class']
     });
 });
