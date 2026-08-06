@@ -1,34 +1,25 @@
-using AutoMapper;
 using GestionEmpresarial.Interfaces;
 using GestionEmpresarial.Models;
 using GestionEmpresarial.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using System.Security.Claims;
 
 namespace GestionEmpresarial.Controllers
 {
     [Authorize]
     public class HomeController : Controller
     {
-        private readonly ICurrentUserService _currentUserService;
-        private readonly IMapper _mapper;
+        private readonly IDashboardService _dashboardService;
 
-        public HomeController(ICurrentUserService currentUserService, IMapper mapper)
+        public HomeController(IDashboardService dashboardService)
         {
-            _currentUserService = currentUserService;
-            _mapper = mapper;
+            _dashboardService = dashboardService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var model = new DashboardViewModel
-            {
-                Usuario = _currentUserService.NombreUsuario,
-                Rol = _currentUserService.Rol,
-                FechaActual = DateTime.Now
-            };
+            var model = await _dashboardService.ObtenerDashboardAsync();
 
             return View(model);
         }

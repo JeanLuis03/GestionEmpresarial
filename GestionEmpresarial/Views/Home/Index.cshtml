@@ -1,20 +1,179 @@
-﻿@using GestionEmpresarial.ViewModels
-
-@model DashboardViewModel
+@using System.Text.Json
+@model GestionEmpresarial.ViewModels.DashboardViewModel
 
 @{
-    ViewData["Title"] = "Dashboard";
+    ViewData["Title"] = "Dashboard CorePlus ERP";
+
+    var categorias = Model.Categorias.Select(c => c.Categoria).ToList();
+    var cantidades = Model.Categorias.Select(c => c.CantidadProductos).ToList();
 }
 
+<div class="d-flex flex-column gap-4">
+    <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body p-4 p-lg-5">
+            <div class="row align-items-start g-3">
+                <div class="col-lg-8">
+                    <div class="d-flex flex-column gap-2">
+                        <div class="d-flex align-items-center gap-2 text-primary fw-semibold small text-uppercase">
+                            <span class="material-symbols-outlined fs-5">space_dashboard</span>
+                            CorePlus ERP
+                        </div>
+                        <h1 class="h3 mb-0 fw-bold">Dashboard CorePlus ERP</h1>
+                        <p class="mb-0 text-muted fs-5">
+                            Bienvenido, <span class="fw-semibold">@Model.NombreUsuario</span>
+                        </p>
+                        <p class="mb-0 text-muted">
+                            Rol: <span class="fw-semibold">@Model.RolUsuario</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <div class="d-inline-flex flex-column align-items-lg-end gap-1">
+                        <span class="text-uppercase small text-muted fw-semibold">Fecha y Hora</span>
+                        <span class="fs-5 fw-semibold">@Model.FechaActual.ToString("dd/MM/yyyy hh:mm tt")</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="dashboard-header">
+    <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-xl-4">
+        <div class="col">
+            <div class="card shadow-sm border-0 rounded-4 bg-primary text-white h-100">
+                <div class="card-body p-4 d-flex align-items-center gap-3">
+                    <div class="rounded-4 bg-dark bg-opacity-10 p-3 d-inline-flex align-items-center justify-content-center">
+                        <span class="material-symbols-outlined fs-2">groups</span>
+                    </div>
+                    <div class="flex-grow-1">
+                        <div class="display-6 fw-bold lh-1">@Model.TotalClientes</div>
+                        <div class="fw-semibold fs-5">Clientes Activos</div>
+                        <div class="small opacity-75">Registrados</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow-sm border-0 rounded-4 bg-success text-white h-100">
+                <div class="card-body p-4 d-flex align-items-center gap-3">
+                    <div class="rounded-4 bg-dark bg-opacity-10 p-3 d-inline-flex align-items-center justify-content-center">
+                        <span class="material-symbols-outlined fs-2">inventory_2</span>
+                    </div>
+                    <div class="flex-grow-1">
+                        <div class="display-6 fw-bold lh-1">@Model.TotalProductos</div>
+                        <div class="fw-semibold fs-5">Productos Activos</div>
+                        <div class="small opacity-75">Disponibles</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow-sm border-0 rounded-4 bg-secondary text-white h-100">
+                <div class="card-body p-4 d-flex align-items-center gap-3">
+                    <div class="rounded-4 bg-dark bg-opacity-10 p-3 d-inline-flex align-items-center justify-content-center">
+                        <span class="material-symbols-outlined fs-2">badge</span>
+                    </div>
+                    <div class="flex-grow-1">
+                        <div class="display-6 fw-bold lh-1">@Model.TotalUsuarios</div>
+                        <div class="fw-semibold fs-5">Usuarios Activos</div>
+                        <div class="small opacity-75">Con acceso</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow-sm border-0 rounded-4 bg-info text-white h-100">
+                <div class="card-body p-4 d-flex align-items-center gap-3">
+                    <div class="rounded-4 bg-dark bg-opacity-10 p-3 d-inline-flex align-items-center justify-content-center">
+                        <span class="material-symbols-outlined fs-2">category</span>
+                    </div>
+                    <div class="flex-grow-1">
+                        <div class="display-6 fw-bold lh-1">@Model.TotalCategorias</div>
+                        <div class="fw-semibold fs-5">Categorías</div>
+                        <div class="small opacity-75">Registradas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <h2>
-
-		Bienvenido, @Model.Usuario
-
-    </h2>
-
+    <div class="row g-4">
+        <div class="col-xl-7">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+                <div class="card-header border-0 px-4 pt-4 pb-0">
+                    <h2 class="h5 mb-0 fw-bold">Productos por categoría</h2>
+                </div>
+                <div class="card-body p-4">
+                    <div class="position-relative" style="min-height: 320px;">
+                        <canvas id="graficoCategorias"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+                <div class="card-header border-0 px-4 pt-4 pb-0">
+                    <h2 class="h5 mb-0 fw-bold">Productos con menor stock</h2>
+                </div>
+                <div class="card-body p-4">
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">Código</th>
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Categoría</th>
+                                    <th scope="col" class="text-end">Stock</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.ProductosBajoStock.Any())
+                                {
+                                    foreach (var producto in Model.ProductosBajoStock)
+                                    {
+                                        <tr>
+                                            <td class="fw-semibold text-secondary">@producto.Codigo</td>
+                                            <td>
+                                                <div class="fw-semibold">@producto.Nombre</div>
+                                            </td>
+                                            <td>@producto.Categoria</td>
+                                            <td class="text-end">
+                                                @if (producto.Stock <= 5)
+                                                {
+                                                    <span class="badge rounded-pill text-bg-danger px-3 py-2">@producto.Stock</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge rounded-pill text-bg-warning px-3 py-2 text-dark">@producto.Stock</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="4" class="text-center text-muted py-4">
+                                            No hay productos activos para mostrar.
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-@await Html.PartialAsync("_DashboardCards")
+<script>
+    window.dashboardData = {
+        categorias: @Html.Raw(JsonSerializer.Serialize(categorias)),
+        cantidades: @Html.Raw(JsonSerializer.Serialize(cantidades))
+    };
+</script>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/dashboard.js" asp-append-version="true"></script>
+}

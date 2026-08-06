@@ -1,0 +1,251 @@
+/* ...existing code... */
+body.dark-theme {
+    background-color: #181C24;
+    color: #F8F9FA;
+    transition: background-color 200ms ease, color 200ms ease;
+}
+
+body.dark-theme .app-container,
+body.dark-theme .main-content {
+    background-color: #181C24;
+    color: #F8F9FA;
+}
+
+body.dark-theme .sidebar {
+    background-color: #1F2430;
+    border-color: rgba(255, 255, 255, .08);
+    transition: background-color 200ms ease, border-color 200ms ease;
+}
+
+body.dark-theme .sidebar .nav-link:hover,
+body.dark-theme .sidebar .nav-link.active,
+body.dark-theme .sidebar .sidebar-item:hover {
+    background-color: #2F3542;
+}
+
+body.dark-theme .topbar {
+    background-color: #242933;
+    border-color: rgba(255, 255, 255, .08);
+    color: #F8F9FA;
+    transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+
+body.dark-theme .topbar,
+body.dark-theme .sidebar,
+body.dark-theme .card,
+body.dark-theme .btn,
+body.dark-theme .form-control,
+body.dark-theme .form-select,
+body.dark-theme .table,
+body.dark-theme .modal-content,
+body.dark-theme .dropdown-menu,
+body.dark-theme .input-group-text {
+    transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+body.dark-theme .card,
+body.dark-theme .dashboard-card,
+body.dark-theme .card-header,
+body.dark-theme .card-footer {
+    background-color: #242933;
+    color: #F8F9FA;
+    border-color: rgba(255, 255, 255, .08);
+}
+
+body.dark-theme .text-dark,
+body.dark-theme .text-body,
+body.dark-theme .table,
+body.dark-theme .dropdown-item,
+body.dark-theme .form-label,
+body.dark-theme .nav-link,
+body.dark-theme .page-title,
+body.dark-theme .h1,
+body.dark-theme .h2,
+body.dark-theme .h3,
+body.dark-theme .h4,
+body.dark-theme .h5,
+body.dark-theme .h6,
+body.dark-theme p,
+body.dark-theme small,
+body.dark-theme strong,
+body.dark-theme span,
+body.dark-theme label {
+    color: #F8F9FA;
+}
+
+body.dark-theme .text-muted,
+body.dark-theme .small,
+body.dark-theme .form-text {
+    color: rgba(248, 249, 250, .72) !important;
+}
+
+body.dark-theme .form-control,
+body.dark-theme .form-select,
+body.dark-theme textarea.form-control {
+    background-color: #1B202A;
+    border-color: rgba(255, 255, 255, .12);
+    color: #F8F9FA;
+}
+
+body.dark-theme .form-control:focus,
+body.dark-theme .form-select:focus,
+body.dark-theme textarea.form-control:focus {
+    background-color: #1B202A;
+    color: #F8F9FA;
+    border-color: #6ea8fe;
+    box-shadow: 0 0 0 .2rem rgba(13, 110, 253, .25);
+}
+
+body.dark-theme .form-control::placeholder,
+body.dark-theme textarea.form-control::placeholder {
+    color: rgba(248, 249, 250, .55);
+}
+
+body.dark-theme .input-group-text {
+    background-color: #1B202A;
+    border-color: rgba(255, 255, 255, .12);
+    color: #F8F9FA;
+}
+
+body.dark-theme .table {
+    --bs-table-color: #F8F9FA;
+    --bs-table-bg: #242933;
+    --bs-table-striped-bg: #20252f;
+    --bs-table-striped-color: #F8F9FA;
+    --bs-table-hover-bg: #2F3542;
+    --bs-table-hover-color: #F8F9FA;
+    border-color: rgba(255, 255, 255, .08);
+}
+
+body.dark-theme .table-light,
+body.dark-theme .table thead th,
+body.dark-theme .table thead td {
+    background-color: #1F2430 !important;
+    color: #F8F9FA !important;
+    border-color: rgba(255, 255, 255, .08) !important;
+}
+
+body.dark-theme .table-hover tbody tr:hover {
+    --bs-table-accent-bg: #2F3542;
+}
+
+body.dark-theme .modal-content {
+    background-color: #242933;
+    color: #F8F9FA;
+    border-color: rgba(255, 255, 255, .08);
+}
+
+body.dark-theme .modal-header,
+body.dark-theme .modal-footer {
+    border-color: rgba(255, 255, 255, .08);
+    background-color: #242933;
+}
+
+body.dark-theme .dropdown-menu {
+    background-color: #242933;
+    border-color: rgba(255, 255, 255, .08);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .35);
+}
+
+body.dark-theme .dropdown-item:hover,
+body.dark-theme .dropdown-item:focus {
+    background-color: #2F3542;
+    color: #F8F9FA;
+}
+
+body.dark-theme .profile-button,
+body.dark-theme .theme-toggle-btn {
+    color: #F8F9FA;
+    border-color: rgba(255, 255, 255, .18);
+}
+
+body.dark-theme .profile-button:hover,
+body.dark-theme .theme-toggle-btn:hover {
+    background-color: #2F3542;
+    border-color: rgba(255, 255, 255, .24);
+}
+
+body.dark-theme .btn-outline-secondary {
+    color: #F8F9FA;
+    border-color: rgba(255, 255, 255, .2);
+}
+
+body.dark-theme .btn-outline-secondary:hover {
+    background-color: #2F3542;
+    color: #F8F9FA;
+    border-color: rgba(255, 255, 255, .28);
+}
+
+body.dark-theme .btn-light,
+body.dark-theme .btn-white {
+    background-color: #2F3542;
+    border-color: rgba(255, 255, 255, .12);
+    color: #F8F9FA;
+}
+
+body.dark-theme .dataTable,
+body.dark-theme .dt-container,
+body.dark-theme .dt-paging,
+body.dark-theme .dt-info,
+body.dark-theme .dt-length,
+body.dark-theme .dt-search,
+body.dark-theme .dt-empty {
+    color: #F8F9FA;
+}
+
+body.dark-theme .dt-container .dt-search input,
+body.dark-theme .dt-container .dt-length select {
+    background-color: #1B202A;
+    border-color: rgba(255, 255, 255, .12);
+    color: #F8F9FA;
+}
+
+body.dark-theme table.dataTable thead > tr > th,
+body.dark-theme table.dataTable thead > tr > td {
+    background-color: #1F2430;
+    color: #F8F9FA;
+    border-bottom-color: rgba(255, 255, 255, .08);
+}
+
+body.dark-theme table.dataTable tbody tr {
+    background-color: #242933;
+    color: #F8F9FA;
+}
+
+body.dark-theme table.dataTable tbody tr:hover {
+    background-color: #2F3542 !important;
+}
+
+body.dark-theme table.dataTable tbody td,
+body.dark-theme table.dataTable tbody th {
+    border-top-color: rgba(255, 255, 255, .08);
+}
+
+body.dark-theme .pagination .page-link {
+    background-color: #242933;
+    border-color: rgba(255, 255, 255, .12);
+    color: #F8F9FA;
+}
+
+body.dark-theme .pagination .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+}
+
+body.dark-theme .alert,
+body.dark-theme .toast,
+body.dark-theme .offcanvas,
+body.dark-theme .list-group-item {
+    background-color: #242933;
+    color: #F8F9FA;
+    border-color: rgba(255, 255, 255, .08);
+}
+
+body.dark-theme .bg-light {
+    background-color: #242933 !important;
+}
+
+body.dark-theme canvas {
+    max-width: 100%;
+}
