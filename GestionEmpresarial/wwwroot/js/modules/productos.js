@@ -6,6 +6,7 @@ const ProductosModule = (() => {
     let categorias = [];
     let categoriasPromise = null;
     const btnNuevoProducto = document.getElementById("btnNuevoProducto");
+    const btnReporteProductos = document.getElementById("btnReporteProductos");
 
     const init = async () => {
 
@@ -28,6 +29,10 @@ const ProductosModule = (() => {
             btnNuevoProducto.addEventListener("click", abrirModalNuevo);
         }
 
+        if (btnReporteProductos) {
+            btnReporteProductos.addEventListener("click", abrirReporte);
+        }
+
         document
             .getElementById("formProducto")
             .addEventListener("submit", guardarProducto);
@@ -43,6 +48,10 @@ const ProductosModule = (() => {
     };
 
     //#region REQUESTS
+
+    const abrirReporte = () => {
+        window.open("/Reporte/Productos", "_blank");
+    };
 
     const cargarCategorias = async () => {
 

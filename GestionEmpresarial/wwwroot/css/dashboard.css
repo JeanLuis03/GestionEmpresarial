@@ -157,7 +157,7 @@ body {
 }
 
     .dashboard-header h2 {
-        color: #111827;
+/*        color: #111827;*/ 
         font-weight: 700;
     }
 
@@ -224,7 +224,7 @@ body {
     display: flex;
     align-items: center;
     gap: 14px;
-    background: white;
+/*    background: white;*/
     border: 1px solid #E5E7EB;
     border-radius: 14px;
     padding: 8px 14px;
